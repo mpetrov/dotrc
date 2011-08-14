@@ -19,6 +19,8 @@ mv -f ${ZSHRC} ${BACKUP} 2> /dev/null
 mv -f ${DOTVIM} ${BACKUP} 2> /dev/null
 mv -f ${SCREENRC} ${BACKUP} 2> /dev/null
 
+ln -s ${PREFIX}/submodules/vim-command-t ${PREFIX}/vim/bundle/  || echo "symlink exists"
+
 
 ln -s ${PREFIX}/rc.vim ${VIMRC} 
 ln -s ${PREFIX}/vim ${DOTVIM} 
@@ -27,8 +29,8 @@ ln -s ${PREFIX}/rc.screen ${SCREENRC}
 
 mkdir -p ${PREFIX}/vim/bundle
 
-pushd ~/.vim/vim-command-t
-rake make  && pushd ../bundle && ln -f -s ../vim-command-t && popd
+pushd ~/.vim/bundle/vim-command-t
+rake make 
 popd
 
-pushd vim/bundle  && ln -f -s vim-taglist-plus && popd
+#pushd vim/bundle  && ln -f -s vim-taglist-plus && popd
