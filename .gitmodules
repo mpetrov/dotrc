@@ -16,3 +16,9 @@
 [submodule "submodules/zsh-oh-my-zsh"]
 	path = submodules/zsh-oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
+[submodule "submodules/vim-irblack"]
+	path = submodules/vim-irblack
+	url = https://github.com/wgibbs/vim-irblack
+[submodule "submodules/vim-soy"]
+	path = submodules/vim-soy
+	url = https://github.com/duganchen/vim-soy

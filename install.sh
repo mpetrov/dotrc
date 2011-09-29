@@ -22,6 +22,7 @@ mv -f ${SCREENRC} ${BACKUP} 2> /dev/null
 mkdir -p ${PREFIX}/vim/colors
 mkdir -p ${PREFIX}/vim/bundle
 ln -s ${PREFIX}/submodules/vim-command-t ${PREFIX}/vim/bundle/  || echo "symlink exists"
+ln -s ${PREFIX}/submodules/vim-supertab ${PREFIX}/vim/bundle/  || echo "symlink exists"
 ln -s ${PREFIX}/submodules/vim-pathogen/autoload ${PREFIX}/vim/  || echo "symlink exists"
 
 

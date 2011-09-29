@@ -15,5 +15,6 @@ term        screen-256color
 hardstatus on
 hardstatus alwayslastline '%{= G} %H%{= G} %= %{= w}%-w%{+b r}%n*%t%{-b r}%{w}%+w %= %{c}%d %D %c '
 
+termcapinfo xterm-color|xterm|xterms|xs|rxvt|xterm-256color ti@:te@
+
 screen -t ZSH 0 zsh
-screen -t VIM 1 vim ~

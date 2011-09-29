@@ -69,4 +69,22 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
+if has("gui_macvim")
+  colorscheme ir_black
+endif
+
+filetype off
+syntax on
+filetype plugin indent on
+
+
+
+set textwidth=80
+set colorcolumn=+1
+
+hi ColorColumn guibg=#2d2d2d ctermbg=246
+
+set hlsearch
+set spell
