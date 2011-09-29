@@ -26,7 +26,7 @@ ln -s ${PREFIX}/submodules/vim-supertab ${PREFIX}/vim/bundle/  || echo "symlink 
 ln -s ${PREFIX}/submodules/vim-pathogen/autoload ${PREFIX}/vim/  || echo "symlink exists"
 
 
-ln -s ${PREFIX}/rc.vim ${VIMRC} 
+ln -s ${PREFIX}/rc.vim ${VIMRC}
 ln -s ${PREFIX}/vim ${DOTVIM} 
 ln -s ${PREFIX}/rc.zsh ${ZSHRC} 
 ln -s ${PREFIX}/rc.screen ${SCREENRC} 
