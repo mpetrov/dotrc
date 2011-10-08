@@ -1,8 +1,10 @@
 set nocompatible
+set background=dark
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-
 set autoindent smartindent cindent
+
+let g:SuperTabDefaultCompletionType = "<C-N>"
 
 au BufRead,BufNewFile *.c set noexpandtab
 au BufRead,BufNewFile *.h set noexpandtab
@@ -12,39 +14,37 @@ au FileType java let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-
-" make backspaces more powerfull
 set backspace=indent,eol,start
 
 set spell
-
 set ruler nu 
-set showcmd hlsearch 
+set showcmd hlsearch incsearch noerrorbells
 set list
 
+set wildmode=longest:full
+set wildmenu
+
 set tags=./tags,tags
-syntax on
 filetype plugin indent on
 set mouse=a
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+set cursorline cursorcolumn
+
 runtime! macros/matchit.vim
 
-set listchars=
-execute "set listchars+=tab:" . nr2char(187) . '\ '
+execute "set listchars=tab:" . nr2char(187) . '\ '
 
-set  foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
+set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
 
 if has('gui_macvim')
   set guifont=Menlo:h11
   set transparency=0 
   set guioptions-=T
   colorscheme ir_black
+  set clipboard+=unnamed
 endif
 
 set nobackup nowritebackup noswapfile
-
-"let Tlist_javascript_Ctags_Cmd = '~/.vim/closure_ctags.rb'
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
