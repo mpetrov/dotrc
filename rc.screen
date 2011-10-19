@@ -10,11 +10,15 @@ defutf8 on
 
 termcapinfo rxvt-unicode ti@:te@
 terminfo    rxvt-unicode ti@:te@:
-term        screen-256color
+#term        screen-256color
 
 hardstatus on
 hardstatus alwayslastline '%{= G} %H%{= G} %= %{= w}%-w%{+b r}%n*%t%{-b r}%{w}%+w %= %{c}%d %D %c '
 
-termcapinfo xterm-color|xterm|xterms|xs|rxvt|xterm-256color ti@:te@
+#termcapinfo xterm-256color|xterm-color|xterm|xterms|xs|rxvt ti@:te@
+
+defbce "on"
+term xterm-256color
+termcapinfo xterm-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
 
 screen -t ZSH 0 zsh

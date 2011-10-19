@@ -9,10 +9,19 @@ let g:SuperTabDefaultCompletionType = "<C-N>"
 au BufRead,BufNewFile *.c set noexpandtab
 au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
-au BufRead,BufNewFile js*  set textwidth=80
-au FileType java let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+au BufRead,BufNewFile *.js  set textwidth=80
+
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
+  
+"function! JavaOptions(...)
+"  let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+"  let g:SuperTabDefaultCompletionType = 'context'
+"  let g:SuperTabLongestHighlight = 1
+"endfunction
+
+au FileType java let g:SuperTabDefaultCompletionType = "<C-X, C-U>"
+
 
 set backspace=indent,eol,start
 
@@ -35,6 +44,9 @@ runtime! macros/matchit.vim
 execute "set listchars=tab:" . nr2char(187) . '\ '
 
 set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
+
+set t_Co=256
+colorscheme ir_black
 
 if has('gui_macvim')
   set guifont=Menlo:h11
