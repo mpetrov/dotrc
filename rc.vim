@@ -52,7 +52,8 @@ if has('gui_macvim')
   set guifont=Menlo:h11
   set transparency=0 
   set guioptions-=T
-  colorscheme ir_black
+  set clipboard+=unnamed
+  "colorscheme ir_black
 endif
 
 set nobackup nowritebackup noswapfile
