@@ -37,7 +37,7 @@ set tags=./tags,tags
 filetype plugin indent on
 set mouse=a
 
-set cursorline cursorcolumn
+"set cursorline cursorcolumn
 
 runtime! macros/matchit.vim
 
@@ -46,14 +46,13 @@ execute "set listchars=tab:" . nr2char(187) . '\ '
 set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
 
 set t_Co=256
-colorscheme ir_black
+colorscheme wombat256 
 
 if has('gui_macvim')
   set guifont=Menlo:h11
   set transparency=0 
   set guioptions-=T
   colorscheme ir_black
-  set clipboard+=unnamed
 endif
 
 set nobackup nowritebackup noswapfile
@@ -70,3 +69,6 @@ if v:version >= 700
   hi ColorColumn guibg=#2d2d2d ctermbg=246
 endif
 
+if v:version >= 730
+  set clipboard+=unnamed
+endif
