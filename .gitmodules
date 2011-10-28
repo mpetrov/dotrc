@@ -22,6 +22,3 @@
 [submodule "submodules/vim-soy"]
 	path = submodules/vim-soy
 	url = https://github.com/duganchen/vim-soy
-[submodule "submodules/solarized"]
-	path = submodules/solarized
-	url = https://github.com/altercation/solarized.git
