@@ -46,7 +46,7 @@ execute "set listchars=tab:" . nr2char(187) . '\ '
 set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
 
 set t_Co=256
-colorscheme wombat256 
+colorscheme wombat256
 
 if has('gui_macvim')
   set guifont=Menlo:h11

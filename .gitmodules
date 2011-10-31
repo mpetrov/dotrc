@@ -22,3 +22,6 @@
 [submodule "submodules/vim-soy"]
 	path = submodules/vim-soy
 	url = https://github.com/duganchen/vim-soy
+[submodule "submodules/vim-latex"]
+	path = submodules/vim-latex
+	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex

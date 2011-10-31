@@ -19,8 +19,6 @@ mv -f ${ZSHRC} ${BACKUP} 2> /dev/null
 mv -f ${DOTVIM} ${BACKUP} 2> /dev/null
 mv -f ${SCREENRC} ${BACKUP} 2> /dev/null
 
-mkdir -p ${PREFIX}/vim/colors
-mkdir -p ${PREFIX}/vim/bundle
 ln -s ${PREFIX}/submodules/vim-irblack/colors/ir_black.vim ${PREFIX}/vim/colors/ir_black.vim   || echo "symlink exists"
 ln -s ${PREFIX}/submodules/vim-command-t ${PREFIX}/vim/bundle/  || echo "symlink exists"
 ln -s ${PREFIX}/submodules/vim-supertab ${PREFIX}/vim/bundle/  || echo "symlink exists"
@@ -32,10 +30,7 @@ ln -s ${PREFIX}/vim ${DOTVIM}
 ln -s ${PREFIX}/rc.zsh ${ZSHRC} 
 ln -s ${PREFIX}/rc.screen ${SCREENRC} 
 
-mkdir -p ${PREFIX}/vim/bundle
-
 pushd ~/.vim/bundle/vim-command-t
 rake make 
 popd
 
-#pushd vim/bundle  && ln -f -s vim-taglist-plus && popd
