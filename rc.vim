@@ -56,6 +56,8 @@ if has('gui_macvim')
   "colorscheme ir_black
 endif
 
+cmap w!! w !sudo tee % >/dev/null
+
 set nobackup nowritebackup noswapfile
 
 call pathogen#runtime_append_all_bundles()
