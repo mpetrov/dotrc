@@ -19,6 +19,11 @@ mv -f ${ZSHRC} ${BACKUP} 2> /dev/null
 mv -f ${DOTVIM} ${BACKUP} 2> /dev/null
 mv -f ${SCREENRC} ${BACKUP} 2> /dev/null
 
+ln -s ${PREFIX}/submodules/vim-command-t ${PREFIX}/vim/bundle/  || echo "symlink exists"
+ln -s ${PREFIX}/submodules/vim-supertab ${PREFIX}/vim/bundle/  || echo "symlink exists"
+ln -s ${PREFIX}/submodules/vim-pathogen/autoload ${PREFIX}/vim/  || echo "symlink exists"
+
+
 ln -s ${PREFIX}/rc.vim ${VIMRC}
 ln -s ${PREFIX}/vim ${DOTVIM} 
 ln -s ${PREFIX}/rc.zsh ${ZSHRC} 
