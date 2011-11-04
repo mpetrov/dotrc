@@ -75,3 +75,5 @@ endif
 if v:version >= 730
   set clipboard+=unnamed
 endif
+
+set fileformats=unix,dos,mac

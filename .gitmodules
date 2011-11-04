@@ -25,3 +25,6 @@
 [submodule "submodules/vim-latex"]
 	path = submodules/vim-latex
 	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+[submodule "submodules/vim-easytags"]
+	path = submodules/vim-easytags
+	url = https://github.com/xolox/vim-easytags.git
