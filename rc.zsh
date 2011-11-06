@@ -1,4 +1,4 @@
-export ZSH=$HOME/Library/Profile/submodules/zsh-oh-my-zsh
+export ZSH=$HOME/.rc/submodules/zsh-oh-my-zsh
 
 export ZSH_THEME="fishy"
 export DISABLE_AUTO_UPDATE="true"
