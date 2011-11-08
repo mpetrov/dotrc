@@ -23,7 +23,7 @@ ln -s ${PREFIX}/rc.zsh ${ZSHRC}
 ln -s ${PREFIX}/rc.screen ${SCREENRC} 
 
 pushd ~/.vim/bundle/vim-snipmate
-git apply --stat ../../patches/modified-snipmate-to-use-leader-key.patch
+git apply ../../patches/modified-snipmate-to-use-leader-key.patch
 popd
 
 pushd ~/.vim/bundle/vim-command-t
