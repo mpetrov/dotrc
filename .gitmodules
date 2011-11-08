@@ -28,3 +28,6 @@
 [submodule "submodules/vim-easytags"]
 	path = submodules/vim-easytags
 	url = https://github.com/xolox/vim-easytags.git
+[submodule "submodules/vim-snipmate"]
+	path = submodules/vim-snipmate
+	url = https://github.com/msanders/snipmate.vim.git

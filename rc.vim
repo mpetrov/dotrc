@@ -11,6 +11,8 @@ au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 au BufRead,BufNewFile *.js  set textwidth=80
 
+autocmd bufwritepost .vimrc source $MYVIMRC " auto-source .vimrc
+
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
   
@@ -22,10 +24,14 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 au FileType java let g:SuperTabDefaultCompletionType = "<C-X, C-U>"
 
+" Ignore useless files from command-t searches
+set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff
 
 set backspace=indent,eol,start
 
+set spelllang=en_gb
 set spell
+
 set ruler nu 
 set showcmd hlsearch incsearch noerrorbells
 set list
@@ -45,14 +51,16 @@ execute "set listchars=tab:" . nr2char(187) . '\ '
 
 set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
 
+"set term=xterm-256color
 set t_Co=256
 colorscheme wombat256
+
+
 
 if has('gui_macvim')
   set guifont=Menlo:h11
   set transparency=0 
   set guioptions-=T
-  set clipboard+=unnamed
   "colorscheme ir_black
 endif
 
@@ -77,3 +85,13 @@ if v:version >= 730
 endif
 
 set fileformats=unix,dos,mac
+
+set clipboard=unnamed
+
+set history=1000
+
+
+
+nmap <silent> <leader>s :set spell!<CR>
+nmap <silent> <leader>m :w<ENTER>:make<CR>
+

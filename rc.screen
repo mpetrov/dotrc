@@ -18,7 +18,7 @@ hardstatus alwayslastline '%{= G} %H%{= G} %= %{= w}%-w%{+b r}%n*%t%{-b r}%{w}%+
 #termcapinfo xterm-256color|xterm-color|xterm|xterms|xs|rxvt ti@:te@
 
 defbce "on"
-term xterm-256color
-termcapinfo xterm-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
+term screen-256color
+termcapinfo screen-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
 
 screen -t ZSH 0 zsh
