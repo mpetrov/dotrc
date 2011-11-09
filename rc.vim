@@ -16,12 +16,6 @@ autocmd bufwritepost .vimrc source $MYVIMRC " auto-source .vimrc
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
   
-"function! JavaOptions(...)
-"  let g:SuperTabDefaultCompletionTypeDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
-"  let g:SuperTabDefaultCompletionType = 'context'
-"  let g:SuperTabLongestHighlight = 1
-"endfunction
-
 au FileType java let g:SuperTabDefaultCompletionType = "<C-X, C-U>"
 
 " Ignore useless files from command-t searches
@@ -91,7 +85,27 @@ set clipboard=unnamed
 set history=1000
 
 
-
+" Leader key mappings
 nmap <silent> <leader>s :set spell!<CR>
 nmap <silent> <leader>m :w<ENTER>:make<CR>
+
+" Indent/unindent
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+" Tab switching for MacVim
+map <D-S-]> gt
+map <D-S-[> gT
+map <D-1> 1gt
+map <D-2> 2gt
+map <D-3> 3gt
+map <D-4> 4gt
+map <D-5> 5gt
+map <D-6> 6gt
+map <D-7> 7gt
+map <D-8> 8gt
+map <D-9> 9gt
+map <D-0> :tablast<CR>
 

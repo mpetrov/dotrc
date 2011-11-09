@@ -15,6 +15,7 @@ git submodule update
 ln -s ${PREFIX}/submodules/vim-command-t ${PREFIX}/vim/bundle/  || echo "symlink exists"
 ln -s ${PREFIX}/submodules/vim-supertab ${PREFIX}/vim/bundle/  || echo "symlink exists"
 ln -s ${PREFIX}/submodules/vim-snipmate ${PREFIX}/vim/bundle/  || echo "symlink exists"
+ln -s ${PREFIX}/submodules/vim-fugitive ${PREFIX}/vim/bundle/  || echo "symlink exists"
 ln -s ${PREFIX}/submodules/vim-pathogen/autoload ${PREFIX}/vim/  || echo "symlink exists"
 
 ln -s ${PREFIX}/rc.vim ${VIMRC}
