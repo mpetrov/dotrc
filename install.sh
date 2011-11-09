@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PREFIX=`pwd`
+
 ROOT=~
 
 VIMRC=${ROOT}/.vimrc
