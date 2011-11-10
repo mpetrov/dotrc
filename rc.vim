@@ -109,3 +109,8 @@ map <D-8> 8gt
 map <D-9> 9gt
 map <D-0> :tablast<CR>
 
+"imap <tab> <Plug>SuperTabForward
+"imap <s-tab> <Plug>SuperTabBackward
+
+
+

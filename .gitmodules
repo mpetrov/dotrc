@@ -7,30 +7,9 @@
 [submodule "submodules/vim-pathogen"]
 	path = submodules/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule "submodules/vim-command-t"]
-	path = submodules/vim-command-t
-	url = https://github.com/wincent/Command-T
-[submodule "submodules/vim-supertab"]
-	path = submodules/vim-supertab
-	url = https://github.com/vim-scripts/SuperTab
 [submodule "submodules/zsh-oh-my-zsh"]
 	path = submodules/zsh-oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule "submodules/vim-irblack"]
-	path = submodules/vim-irblack
-	url = https://github.com/wgibbs/vim-irblack
-[submodule "submodules/vim-soy"]
-	path = submodules/vim-soy
-	url = https://github.com/duganchen/vim-soy
-[submodule "submodules/vim-latex"]
-	path = submodules/vim-latex
-	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
-[submodule "submodules/vim-easytags"]
-	path = submodules/vim-easytags
-	url = https://github.com/xolox/vim-easytags.git
-[submodule "submodules/vim-snipmate"]
-	path = submodules/vim-snipmate
-	url = https://github.com/msanders/snipmate.vim.git
-[submodule "submodules/vim-fugitive"]
-	path = submodules/vim-fugitive
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
