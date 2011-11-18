@@ -28,6 +28,3 @@
 [submodule "vim/bundle/vim-soy"]
 	path = vim/bundle/vim-soy
 	url = https://github.com/duganchen/vim-soy
-[submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
