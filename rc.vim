@@ -10,6 +10,8 @@ au BufRead,BufNewFile *.c set noexpandtab
 au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 au BufRead,BufNewFile *.js  set textwidth=80
+au BufRead,BufNewFile *.js  setlocal iskeyword+=.
+
 
 autocmd bufwritepost .vimrc source $MYVIMRC " auto-source .vimrc
 
@@ -18,8 +20,10 @@ autocmd FileType c set omnifunc=ccomplete#Complete
   
 au FileType java let g:SuperTabDefaultCompletionType = "<C-X, C-U>"
 
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 " Ignore useless files from command-t searches
-set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff
+set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen
 
 set backspace=indent,eol,start
 
@@ -88,6 +92,7 @@ set history=1000
 " Leader key mappings
 nmap <silent> <leader>s :set spell!<CR>
 nmap <silent> <leader>m :w<ENTER>:make<CR>
+nmap <silent> <leader>f :w<ENTER>:!fixjsstyle %<ENTER>:e! %<CR>
 
 " Indent/unindent
 nmap <D-[> <<
@@ -112,5 +117,6 @@ map <D-0> :tablast<CR>
 "imap <tab> <Plug>SuperTabForward
 "imap <s-tab> <Plug>SuperTabBackward
 
-
-
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*

@@ -1,3 +1,28 @@
+snippet @c
+	/**
+	 * ${1:Class representing }
+	 * @constructor
+	 */
+snippet @p
+	@param {${1:*}} ${2:name}
+snippet @t
+	/** @type {${1:type}}*/
+snippet @r
+	@return {${1:type}} ${2:}
+snippet @rs
+	@return {string} ${1:}A
+snippet obj
+	!Object.<${1:string},${2:string}>
+snippet arr
+	!Array.<${1:string}>
+snippet fun
+	function(${1:}){${2:body}}
+snippet Fun
+	${1:name} = function(${2:}){
+		${3:}
+	};
+snippet forarr
+	for (var ${1:name}, ${3:i} = 0; $1 = ${2:arr}[$3]; $3++) {
+		${4:}
+	}
 
-snippet type
-	/** @type{${1:type}}*/
