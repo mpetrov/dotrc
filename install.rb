@@ -2,6 +2,19 @@
 
 BASE_DIR = File.dirname(__FILE__)
 
+require 'rbconfig'
+
+
+def mac?()
+  !!Config::CONFIG['target_os'][/darwin/]
+end
+
+def linux?()
+  !!Config::CONFIG['target_os'][/linux/]
+end
+
+
+
 def link_rc(paths)
   paths.each_pair { |file, points_to|
     points_to = File.expand_path "#{BASE_DIR}/#{points_to}"
@@ -43,13 +56,15 @@ def install_command_t()
 end
 
 def apt_get(*args)
+  return unless linux?
   if not File.exists? '/usr/local/bin/hg'
-    puts `apt-get intall #{args.join ' '}`
+    puts `apt-get install #{args.join ' '}`
   end 
 end
 
 
 def brew(*args)
+  return unless mac?
   list = `brew list`.split
   to_brew = {}
   args.each do |prog|
@@ -74,6 +89,7 @@ def brew(*args)
 end
 
 def install_mercurial
+  return unless mac?
   if not File.exists? '/usr/local/bin/hg'
       if `easy_install mercurial 2>&1` && $?.exitstatus == 0 then
         puts "Installed Mercurial"

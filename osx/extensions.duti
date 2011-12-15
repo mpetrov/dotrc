@@ -54,6 +54,13 @@ com.apple.Preview .psd all
 com.apple.Preview .tif all
 com.apple.Preview .tiff all
 
+# open office files in preview
+com.apple.Preview .ppt all
+com.apple.Preview .pptx all
+com.apple.Preview .doc all
+com.apple.Preview .docx all
+
+
 # video with VLC
 org.videolan.vlc .3gp all
 org.videolan.vlc .asf all

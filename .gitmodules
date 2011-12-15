@@ -28,3 +28,12 @@
 [submodule "vim/bundle/vim-soy"]
 	path = vim/bundle/vim-soy
 	url = https://github.com/duganchen/vim-soy
+[submodule "vim/bundle/vim-searchcomplete"]
+	path = vim/bundle/vim-searchcomplete
+	url = https://github.com/vim-scripts/SearchComplete
+[submodule "vim/bundle/vim-cocoa"]
+	path = vim/bundle/vim-cocoa
+	url = https://github.com/msanders/cocoa.vim
+[submodule "vim/bundle/vim-clang_complete"]
+	path = vim/bundle/vim-clang_complete
+	url = https://github.com/Rip-Rip/clang_complete

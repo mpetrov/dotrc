@@ -4,6 +4,8 @@ set background=dark
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent smartindent cindent
 
+
+let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = "<C-N>"
 
 au BufRead,BufNewFile *.c set noexpandtab
@@ -12,13 +14,15 @@ au BufRead,BufNewFile Makefile* set noexpandtab
 au BufRead,BufNewFile *.js  set textwidth=80
 au BufRead,BufNewFile *.js  setlocal iskeyword+=.
 
+au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
+
 
 autocmd bufwritepost .vimrc source $MYVIMRC " auto-source .vimrc
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
   
-au FileType java let g:SuperTabDefaultCompletionType = "<C-X, C-U>"
+" au FileType java let g:SuperTabDefaultCompletionType = "<C-X, C-U>"
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
