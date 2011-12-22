@@ -30,6 +30,7 @@ def link_rc(paths)
     end
     if not File.exists?(file) then 
       puts "Symlinked #{file} -> #{points_to}"
+      File.delete file
       File.symlink points_to, file
     end
   }
