@@ -57,9 +57,7 @@ end
 
 def apt_get(*args)
   return unless linux?
-  if not File.exists? '/usr/local/bin/hg'
-    puts `apt-get install #{args.join ' '}`
-  end 
+    puts "apt-get install #{args.join ' '}"
 end
 
 

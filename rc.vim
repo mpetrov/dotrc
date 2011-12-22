@@ -118,6 +118,39 @@ map <D-8> 8gt
 map <D-9> 9gt
 map <D-0> :tablast<CR>
 
+" Indent/unindent
+nmap <M-[> <<
+nmap <M-]> >>
+vmap <M-[> <gv
+vmap <M-]> >gv
+
+" Tab switching for Linux
+map <M-S-]> gt
+map <M-S-[> gT
+map <M-1> 1gt
+map <M-2> 2gt
+map <M-3> 3gt
+map <M-4> 4gt
+map <M-5> 5gt
+map <M-6> 6gt
+map <M-7> 7gt
+map <M-8> 8gt
+map <M-9> 9gt
+map <M-0> :tablast<CR>
+
+nmap <silent> <leader>c :call ToggleMouse()<CR>
+function! ToggleMouse()
+  if &mouse == 'a'
+    set mouse=
+    set nonumber
+    echo "Mouse usage disabled"
+  else
+    set mouse=a
+    set number
+    echo "Mouse usage enabled"
+  endif
+endfunction
+
 "imap <tab> <Plug>SuperTabForward
 "imap <s-tab> <Plug>SuperTabBackward
 
