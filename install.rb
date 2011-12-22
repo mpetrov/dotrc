@@ -107,4 +107,5 @@ submodule_update
 link_rc '.vimrc' => 'rc.vim', '.vim' => 'vim'
 link_rc '.zshrc' => 'rc.zsh'
 link_rc '.screenrc' => 'rc.screen'
+link_rc '.vim/autoload' => 'submodules/vim-pathogen/autoload'
 install_command_t
