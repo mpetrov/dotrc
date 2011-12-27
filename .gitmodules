@@ -37,3 +37,9 @@
 [submodule "vim/bundle/vim-clang_complete"]
 	path = vim/bundle/vim-clang_complete
 	url = https://github.com/Rip-Rip/clang_complete
+[submodule "vim/bundle/vim-taglist-plus"]
+	path = vim/bundle/vim-taglist-plus
+	url = https://github.com/int3/vim-taglist-plus.git
+[submodule "vim/bundle/vim-tagbar"]
+	path = vim/bundle/vim-tagbar
+	url = git://github.com/majutsushi/tagbar

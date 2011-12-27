@@ -4,6 +4,23 @@ set background=dark
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent smartindent cindent
 
+let Tlist_javascript_Ctags_Cmd = '~/.vim/closure_ctags.rb'
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : '~/.vim/closure_ctags.rb'
+\ }
+
+
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : '~/.vim/closure_ctags.rb',
+    \ 'ctagstype' : 'JavaScript',
+    \ 'kinds'     : [
+        \ 'o:objects',
+        \ 'v:obj',
+        \ 'f:functions',
+        \ 'a:arrays',
+        \ 's:strings'
+    \ ]
+\ }
 
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = "<C-N>"
