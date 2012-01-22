@@ -33,8 +33,8 @@ def link_rc(paths)
       begin
         File.symlink points_to, file
       rescue
-        File.delete points_to, file
-        File.symlink points_to, file
+        #File.delete points_to, file
+        #File.symlink points_to, file
       end
     end
   }
@@ -42,10 +42,12 @@ end
 
 def submodule_update 
   Dir.chdir BASE_DIR do
+     puts "Updating submodules...\n"
     `git submodule init 2>&1` && $?.exitstatus == 0 or
       return "ERROR: could not git submodule init\n"
     `git submodule update 2>&1` && $?.exitstatus == 0 or
       return "ERROR: could not git submodule update\n"
+     puts "Updated submodules..."
   end
   ""
 end
