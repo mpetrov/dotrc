@@ -28,18 +28,15 @@
 [submodule "vim/bundle/vim-soy"]
 	path = vim/bundle/vim-soy
 	url = https://github.com/duganchen/vim-soy
-[submodule "vim/bundle/vim-searchcomplete"]
-	path = vim/bundle/vim-searchcomplete
-	url = https://github.com/vim-scripts/SearchComplete
-[submodule "vim/bundle/vim-cocoa"]
-	path = vim/bundle/vim-cocoa
-	url = https://github.com/msanders/cocoa.vim
-[submodule "vim/bundle/vim-clang_complete"]
-	path = vim/bundle/vim-clang_complete
-	url = https://github.com/Rip-Rip/clang_complete
 [submodule "vim/bundle/vim-taglist-plus"]
 	path = vim/bundle/vim-taglist-plus
 	url = https://github.com/int3/vim-taglist-plus.git
 [submodule "vim/bundle/vim-tagbar"]
 	path = vim/bundle/vim-tagbar
 	url = git://github.com/majutsushi/tagbar
+[submodule "vim/bundle/vim-sorround"]
+	path = vim/bundle/vim-sorround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git

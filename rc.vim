@@ -1,9 +1,22 @@
 set nocompatible
 set background=dark
 
+
+" Fix the mouse in tmux.
+if has('mouse')
+  set mouse=a
+  if &term =~ "xterm" || &term =~ "screen"
+    autocmd VimEnter * set ttymouse=xterm2
+    autocmd FocusGained * set ttymouse=xterm2
+    autocmd BufEnter * set ttymouse=xterm2
+  endif
+endif
+
+
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent smartindent cindent
 
+let g:Tlist_Ctags_Cmd="/usr/local/bin/ctags"
 let Tlist_javascript_Ctags_Cmd = '~/.vim/closure_ctags.rb'
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.vim/closure_ctags.rb'
@@ -22,11 +35,20 @@ let g:tagbar_type_javascript = {
     \ ]
 \ }
 
+if getwinvar(0, '&diff')
+  finish
+endif
+
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = "<C-N>"
 
 au BufRead,BufNewFile *.c set noexpandtab
 au BufRead,BufNewFile *.h set noexpandtab
+
+" Settings updated for libdwarf
+au BufRead,BufNewFile *.c set tabstop=4 softtabstop=4 shiftwidth=4 expandtab 
+au BufRead,BufNewFile *.h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+
 au BufRead,BufNewFile Makefile* set noexpandtab
 au BufRead,BufNewFile *.js  set textwidth=80
 au BufRead,BufNewFile *.js  setlocal iskeyword+=.
@@ -44,17 +66,15 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 " Ignore useless files from command-t searches
-set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen
+set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen,bin
 
 set backspace=indent,eol,start
 
 set spelllang=en_gb
-set spell
-
+set nospell
 set ruler nu 
 set showcmd hlsearch incsearch noerrorbells
 set list
-
 set wildmode=longest:full
 set wildmenu
 
@@ -70,17 +90,17 @@ execute "set listchars=tab:" . nr2char(187) . '\ '
 
 set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
 
-"set term=xterm-256color
 set t_Co=256
 colorscheme wombat256
-
-
 
 if has('gui_macvim')
   set guifont=Menlo:h11
   set transparency=0 
   set guioptions-=T
-  "colorscheme ir_black
+  set guioptions-=L
+  set guioptions-=l
+  set guioptions-=r
+  set guioptions-=R
 endif
 
 cmap w!! w !sudo tee % >/dev/null
@@ -135,26 +155,7 @@ map <D-8> 8gt
 map <D-9> 9gt
 map <D-0> :tablast<CR>
 
-" Indent/unindent
-nmap <M-[> <<
-nmap <M-]> >>
-vmap <M-[> <gv
-vmap <M-]> >gv
-
-" Tab switching for Linux
-map <M-S-]> gt
-map <M-S-[> gT
-map <M-1> 1gt
-map <M-2> 2gt
-map <M-3> 3gt
-map <M-4> 4gt
-map <M-5> 5gt
-map <M-6> 6gt
-map <M-7> 7gt
-map <M-8> 8gt
-map <M-9> 9gt
-map <M-0> :tablast<CR>
-
+" Hack for toggling mouse usage
 nmap <silent> <leader>c :call ToggleMouse()<CR>
 function! ToggleMouse()
   if &mouse == 'a'
@@ -171,6 +172,6 @@ endfunction
 "imap <tab> <Plug>SuperTabForward
 "imap <s-tab> <Plug>SuperTabBackward
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*

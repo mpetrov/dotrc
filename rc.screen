@@ -1,5 +1,7 @@
 startup_message off
 
+defscrollback 10000
+
 shell /bin/zsh
 startup_message off
 autodetach      on
@@ -8,7 +10,7 @@ vbell           on
 setenv LC_CTYPE en_GB.UTF-8
 defutf8 on
 
-termcapinfo rxvt-unicode ti@:te@
+#termcapinfo rxvt-unicode ti@:te@
 terminfo    rxvt-unicode ti@:te@:
 #term        screen-256color
 
@@ -19,6 +21,6 @@ hardstatus alwayslastline '%{= G} %H%{= G} %= %{= w}%-w%{+b r}%n*%t%{-b r}%{w}%+
 
 defbce "on"
 term screen-256color
-termcapinfo screen-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
+#termcapinfo screen-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
 
 screen -t ZSH 0 zsh
