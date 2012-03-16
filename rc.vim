@@ -1,8 +1,8 @@
 set nocompatible
 set background=dark
+set t_Co=256
+colorscheme wombat256
 
-
-" Fix the mouse in tmux.
 if has('mouse')
   set mouse=a
   if &term =~ "xterm" || &term =~ "screen"
@@ -21,7 +21,7 @@ let Tlist_javascript_Ctags_Cmd = '~/.vim/closure_ctags.rb'
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.vim/closure_ctags.rb'
 \ }
-
+let g:syntastic_disabled_filetypes = ["c"]
 
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.vim/closure_ctags.rb',
@@ -35,40 +35,6 @@ let g:tagbar_type_javascript = {
     \ ]
 \ }
 
-if getwinvar(0, '&diff')
-  finish
-endif
-
-let g:SuperTabMappingBackward = '<c-s-tab>'
-let g:SuperTabDefaultCompletionType = "<C-N>"
-
-au BufRead,BufNewFile *.c set noexpandtab
-au BufRead,BufNewFile *.h set noexpandtab
-
-" Settings updated for libdwarf
-au BufRead,BufNewFile *.c set tabstop=4 softtabstop=4 shiftwidth=4 expandtab 
-au BufRead,BufNewFile *.h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-
-au BufRead,BufNewFile Makefile* set noexpandtab
-au BufRead,BufNewFile *.js  set textwidth=80
-au BufRead,BufNewFile *.js  setlocal iskeyword+=.
-
-au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
-
-
-autocmd bufwritepost .vimrc source $MYVIMRC " auto-source .vimrc
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType c set omnifunc=ccomplete#Complete
-  
-" au FileType java let g:SuperTabDefaultCompletionType = "<C-X, C-U>"
-
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-" Ignore useless files from command-t searches
-set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen,bin
-
-set backspace=indent,eol,start
 
 set spelllang=en_gb
 set nospell
@@ -78,9 +44,43 @@ set list
 set wildmode=longest:full
 set wildmenu
 
+let g:SuperTabMappingBackward = '<c-s-tab>'
+let g:SuperTabDefaultCompletionType = "<C-N>"
+
+au BufRead,BufNewFile Makefile* set noexpandtab
+
+au BufRead,BufNewFile *.c set tabstop=4 softtabstop=4 shiftwidth=4 expandtab 
+au BufRead,BufNewFile *.h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+
+au BufRead,BufNewFile *.js  set textwidth=80
+au BufRead,BufNewFile *.js  setlocal iskeyword+=.
+au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
+
+
+autocmd bufwritepost .vimrc source $MYVIMRC
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType c set omnifunc=ccomplete#Complete
+  
+
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+
+" Ignore useless files from command-t searches
+set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen,bin,*.class
+
+set backspace=indent,eol,start
+
+set spelllang=en_gb
+set nospell
+"set ruler nu 
+set showcmd hlsearch incsearch noerrorbells
+set list
+set wildmode=list:longest,full
+set wildmenu
+
 set tags=./tags,tags
 filetype plugin indent on
-set mouse=a
 
 "set cursorline cursorcolumn
 
@@ -90,8 +90,6 @@ execute "set listchars=tab:" . nr2char(187) . '\ '
 
 set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
 
-set t_Co=256
-colorscheme wombat256
 
 if has('gui_macvim')
   set guifont=Menlo:h11
@@ -169,9 +167,12 @@ function! ToggleMouse()
   endif
 endfunction
 
+ruby load "~/.vimrc.rb"
+
 "imap <tab> <Plug>SuperTabForward
 "imap <s-tab> <Plug>SuperTabBackward
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
+"
