@@ -1,4 +1,18 @@
 set nocompatible
+
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'msanders/snipmate.vim'
+Bundle 'duganchen/vim-soy'
+Bundle 'ervandew/supertab'
+Bundle 'tpop/vim-sorround'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized'
+filetype on
 set background=dark
 set t_Co=256
 colorscheme wombat256
@@ -21,7 +35,7 @@ let Tlist_javascript_Ctags_Cmd = '~/.vim/closure_ctags.rb'
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.vim/closure_ctags.rb'
 \ }
-let g:syntastic_disabled_filetypes = ["c"]
+let g:syntastic_disabled_filetypes = ["c", "html"]
 
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.vim/closure_ctags.rb',
