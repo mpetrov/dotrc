@@ -52,15 +52,6 @@ def submodule_update
   ""
 end
 
-def install_command_t()
-  Dir.chdir "#{BASE_DIR}/vim/bundle/vim-command-t" do
-    if `rake make 2>&1` && $?.exitstatus == 0 then
-      puts "Installed Command-T"
-    else
-      puts "ERROR: Command-T install exited with an error code!"
-    end
-  end
-end
 
 def apt_get(*args)
   return unless linux?
@@ -120,5 +111,3 @@ link_rc '.vimrc' => 'rc.vim', '.vim' => 'vim'
 link_rc '.zshrc' => 'rc.zsh'
 link_rc '.tmux.conf' => 'conf.tmux'
 link_rc '.screenrc' => 'rc.screen'
-link_rc '.vim/autoload' => 'submodules/vim-pathogen/autoload'
-install_command_t
