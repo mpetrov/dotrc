@@ -4,45 +4,6 @@
 [submodule "submodules/zsh-syntax-highlighting"]
 	path = submodules/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "submodules/vim-pathogen"]
-	path = submodules/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen
 [submodule "submodules/zsh-oh-my-zsh"]
 	path = submodules/zsh-oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/vim-supertab"]
-	path = vim/bundle/vim-supertab
-	url = https://github.com/ervandew/supertab
-[submodule "vim/bundle/vim-command-t"]
-	path = vim/bundle/vim-command-t
-	url = https://github.com/wincent/Command-T
-[submodule "vim/bundle/vim-snipmate"]
-	path = vim/bundle/vim-snipmate
-	url = https://github.com/msanders/snipmate.vim.git
-[submodule "vim/bundle/vim-syntastic"]
-	path = vim/bundle/vim-syntastic
-	url = https://github.com/scrooloose/syntastic/
-[submodule "vim/bundle/vim-soy"]
-	path = vim/bundle/vim-soy
-	url = https://github.com/duganchen/vim-soy
-[submodule "vim/bundle/vim-taglist-plus"]
-	path = vim/bundle/vim-taglist-plus
-	url = https://github.com/int3/vim-taglist-plus.git
-[submodule "vim/bundle/vim-tagbar"]
-	path = vim/bundle/vim-tagbar
-	url = git://github.com/majutsushi/tagbar
-[submodule "vim/bundle/vim-sorround"]
-	path = vim/bundle/vim-sorround
-	url = https://github.com/tpope/vim-surround
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/vim-cctree"]
-	path = vim/bundle/vim-cctree
-	url = git://github.com/vim-scripts/CCTree.git
-[submodule "vim/bundle/vim-ctrlp"]
-	path = vim/bundle/vim-ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
