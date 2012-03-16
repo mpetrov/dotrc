@@ -1,6 +1,9 @@
 set nocompatible
+set laststatus=2
+set encoding=utf-8
 
-
+let g:ctrlp_working_path_mode = 0
+" Load Vundle
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -9,15 +12,23 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'msanders/snipmate.vim'
 Bundle 'duganchen/vim-soy'
 Bundle 'ervandew/supertab'
-Bundle 'tpop/vim-sorround'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-pastie'
 Bundle 'kien/ctrlp.vim'
+Bundle "git.zip"
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'Lokaltog/vim-powerline'
+Bundle "ack.vim"
+Bundle "tComment"
+Bundle "ZoomWin"
+Bundle 'mutewinter/vim-indent-guides'
+Bundle 'mutewinter/LustyJuggler'
 filetype on
 set background=dark
 set t_Co=256
 colorscheme wombat256
 
-if has('mouse')
+if has('mouse') 
   set mouse=a
   if &term =~ "xterm" || &term =~ "screen"
     autocmd VimEnter * set ttymouse=xterm2
@@ -71,7 +82,7 @@ au BufRead,BufNewFile *.js  setlocal iskeyword+=.
 au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
 
 
-autocmd bufwritepost .vimrc source $MYVIMRC
+"autocmd bufwritepost .vimrc source $MYVIMRC
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
@@ -84,14 +95,10 @@ let g:syntastic_auto_loc_list=1
 set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen,bin,*.class
 
 set backspace=indent,eol,start
-
 set spelllang=en_gb
-set nospell
-"set ruler nu 
-set showcmd hlsearch incsearch noerrorbells
-set list
+set showcmd hlsearch incsearch noerrorbells list wildmenu
+set nospell nu
 set wildmode=list:longest,full
-set wildmenu
 
 set tags=./tags,tags
 filetype plugin indent on
@@ -108,19 +115,15 @@ set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1
 if has('gui_macvim')
   set guifont=Menlo:h11
   set transparency=0 
-  set guioptions-=T
-  set guioptions-=L
-  set guioptions-=l
-  set guioptions-=r
-  set guioptions-=R
+  set guioptions=egmt 
 endif
 
 cmap w!! w !sudo tee % >/dev/null
 
 set nobackup nowritebackup noswapfile
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
 
 filetype off
 syntax on
@@ -136,24 +139,25 @@ if v:version >= 730
 endif
 
 set fileformats=unix,dos,mac
-
 set clipboard=unnamed
-
 set history=1000
 
 
 " Leader key mappings
 nmap <silent> <leader>s :set spell!<CR>
+nmap <silent> <leader>h :nohl<CR>
 nmap <silent> <leader>m :w<ENTER>:make<CR>
 nmap <silent> <leader>f :w<ENTER>:!fixjsstyle %<ENTER>:e! %<CR>
 
-" Indent/unindent
+noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
+vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
+nnoremap <LocalLeader>/ :TComment<CR>
+vnoremap <LocalLeader>/ :TComment<CR>
+" MacVim bindings.
 nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
-
-" Tab switching for MacVim
 map <D-S-]> gt
 map <D-S-[> gT
 map <D-1> 1gt
@@ -181,12 +185,3 @@ function! ToggleMouse()
   endif
 endfunction
 
-ruby load "~/.vimrc.rb"
-
-"imap <tab> <Plug>SuperTabForward
-"imap <s-tab> <Plug>SuperTabBackward
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"
