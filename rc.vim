@@ -2,6 +2,7 @@ set nocompatible
 set laststatus=2
 set encoding=utf-8
 
+let g:LustyJugglerSuppressRubyWarning = 1
 let g:ctrlp_working_path_mode = 0
 " Load Vundle
 filetype off
@@ -14,6 +15,7 @@ Bundle 'duganchen/vim-soy'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-pastie'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'kien/ctrlp.vim'
 Bundle "git.zip"
 Bundle 'altercation/vim-colors-solarized'
@@ -30,11 +32,11 @@ colorscheme wombat256
 
 if has('mouse') 
   set mouse=a
-  if &term =~ "xterm" || &term =~ "screen"
-    autocmd VimEnter * set ttymouse=xterm2
-    autocmd FocusGained * set ttymouse=xterm2
-    autocmd BufEnter * set ttymouse=xterm2
-  endif
+"  if &term =~ "xterm" || &term =~ "screen"
+    autocmd VimEnter * set ttymouse=xterm
+    autocmd FocusGained * set ttymouse=xterm
+    autocmd BufEnter * set ttymouse=xterm
+"  endif
 endif
 
 
@@ -145,6 +147,7 @@ set history=1000
 
 " Leader key mappings
 nmap <silent> <leader>s :set spell!<CR>
+nmap <silent> <leader>p :set paste!<CR>
 nmap <silent> <leader>h :nohl<CR>
 nmap <silent> <leader>m :w<ENTER>:make<CR>
 nmap <silent> <leader>f :w<ENTER>:!fixjsstyle %<ENTER>:e! %<CR>
@@ -171,12 +174,14 @@ map <D-8> 8gt
 map <D-9> 9gt
 map <D-0> :tablast<CR>
 
+
 " Hack for toggling mouse usage
 nmap <silent> <leader>c :call ToggleMouse()<CR>
 function! ToggleMouse()
   if &mouse == 'a'
     set mouse=
     set nonumber
+    sign unplace *
     echo "Mouse usage disabled"
   else
     set mouse=a

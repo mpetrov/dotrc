@@ -19,16 +19,17 @@ setw -g automatic-rename
 # act like vim
 setw -g mode-keys vi
 setw -g mode-mouse on
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
+#bind h select-pane -L
+#bind j select-pane -D
+#bind k select-pane -U
+#bind l select-pane -R
 bind-key -r C-h select-window -t :-
 bind-key -r C-l select-window -t :+
-bind < resize-pane -L 4
-bind > resize-pane -R 4
-bind - resize-pane -D 4
-bind + resize-pane -U 4
+
+bind -r h resize-pane -L 5
+bind -r j resize-pane -D 5
+bind -r k resize-pane -U 5
+bind -r l resize-pane -R 5
 
 # look good
 set -g default-terminal "screen-256color"
@@ -37,10 +38,17 @@ set -g default-terminal "screen-256color"
 #set -g status-right '#(uptime | cut -d, -f 2-)'
 
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
-
 #### COLOUR
 
+setw -g monitor-activity on
+set -g visual-activity on
 
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-selection
 
 # default statusbar colors
 set-option -g status-bg colour235 #base02
@@ -71,6 +79,18 @@ set-option -g display-panes-colour colour166 #orange
 
 # clock
 set-window-option -g clock-mode-colour colour64 #green
+
+set -sg escape-time 1
+
+set -g base-index 1
+setw -g pane-base-index 1
+
+bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+
+bind -r ( switch-client -p
+bind -r ) switch-client -n
+
+bind P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log"
 
 # use screen ctrl-a
 unbind C-b
