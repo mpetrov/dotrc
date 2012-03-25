@@ -17,14 +17,16 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local
 
 setopt INC_APPEND_HISTORY
 
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-  # TODO(mpetrov): Linux Specific Commands
-elif [[ "$unamestr" == 'Darwin' ]]; then
+function session() {
   if [[ "$TERM" != "screen-256color" ]] then
     tmux attach-session -t "$USER" || tmux new-session -s "$USER"
     exit
   fi
+}
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+  # TODO(mpetrov): Linux Specific Commands
+elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 
