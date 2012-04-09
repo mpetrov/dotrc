@@ -13,7 +13,8 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey '^Xe' edit-command-line
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:$HOME/prefix/bin:$HOME/prefix/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:$HOME/prefix/bin:$HOME/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin
+
 
 setopt INC_APPEND_HISTORY
 
@@ -28,5 +29,4 @@ if [[ "$unamestr" == 'Linux' ]]; then
   # TODO(mpetrov): Linux Specific Commands
 elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
-
 

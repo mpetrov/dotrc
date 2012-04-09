@@ -25,10 +25,19 @@ Bundle "tComment"
 Bundle "ZoomWin"
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'mutewinter/LustyJuggler'
+Bundle 'HiColors'
 filetype on
 set background=dark
 set t_Co=256
 colorscheme wombat256
+
+
+let g:Powerline_symbols = 'compatible'
+let g:Powerline_symbols_override = {
+        \ 'BRANCH': 'ψ',
+        \ 'LINE': '↳',
+        \ }
+
 
 if has('mouse') 
   set mouse=a

@@ -42,6 +42,14 @@ hi PmenuSel		ctermfg=0		ctermbg=192						guifg=#000000	guibg=#cae682
 endif
 
 
+highlight DiffAdd term=reverse cterm=bold ctermbg=22 ctermfg=white 
+highlight DiffChange term=reverse cterm=none ctermbg=52 ctermfg=white 
+highlight DiffText term=reverse cterm=none ctermbg=130 ctermfg=white 
+highlight DiffDelete term=reverse cterm=none ctermbg=18 ctermfg=white 
+
+
+
+
 " Syntax highlighting
 hi Keyword		ctermfg=111		cterm=none		guifg=#8ac6f2	gui=none
 hi Statement	ctermfg=111		cterm=none		guifg=#8ac6f2	gui=none
@@ -56,6 +64,12 @@ hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic
 hi Comment		ctermfg=246		cterm=none		guifg=#99968b	gui=italic
 hi Todo			ctermfg=245		cterm=none		guifg=#8f8f8f	gui=italic
 
+if !has('gui_macvim')
+	hi Error			ctermfg=52		cterm=none		guifg=#5f0000	gui=italic
+	hi SpellBad			ctermfg=52		cterm=none		guifg=#5f0000	gui=italic
+	hi SpellLocal			ctermfg=17		cterm=none		guifg=#00005f	gui=italic
+	hi SpellCap			ctermfg=17		cterm=none		guifg=#00005f	gui=italic
+endif
 
 " Links
 hi! link FoldColumn		Folded
