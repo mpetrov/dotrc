@@ -97,4 +97,5 @@ unbind C-b
 set -g prefix C-a
 
 
-if-shell 'test "$(uname)" = "Darwin"' 'source ~/.rc/tmux-osx.conf'
+if-shell 'test "$(uname)" = "Darwin"' 'source ~/.rc/osx.tmux'
+if-shell 'test "$(uname)" = "Linux"' 'source ~/.rc/linux.tmux'
