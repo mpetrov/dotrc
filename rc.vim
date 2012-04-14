@@ -41,11 +41,11 @@ let g:Powerline_symbols_override = {
 
 if has('mouse') 
   set mouse=a
-"  if &term =~ "xterm" || &term =~ "screen"
-    autocmd VimEnter * set ttymouse=xterm
-    autocmd FocusGained * set ttymouse=xterm
-    autocmd BufEnter * set ttymouse=xterm
-"  endif
+  autocmd VimEnter * set ttymouse=xterm2
+  autocmd FocusGained * set ttymouse=xterm2
+  autocmd BufEnter * set ttymouse=xterm2
+  autocmd CursorMoved * set ttymouse=xterm2
+  autocmd CursorMovedI * set ttymouse=xterm2
 endif
 
 

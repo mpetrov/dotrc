@@ -97,5 +97,7 @@ unbind C-b
 set -g prefix C-a
 
 
+bind C-c run "tmux show-buffer | ssh -p 6969 localhost pbcopy"
+bind C-v run "ssh -p 6969 localhost pbpaste | tmux load-buffer - && tmux paste-buffer"
+
 if-shell 'test "$(uname)" = "Darwin"' 'source ~/.rc/osx.tmux'
-if-shell 'test "$(uname)" = "Linux"' 'source ~/.rc/linux.tmux'
