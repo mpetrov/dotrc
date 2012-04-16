@@ -109,5 +109,6 @@ brew 'dos2unix', 'unrar', 'wget', 'par', 'git-extras', 'zsh', 'tmux'
 submodule_update
 link_rc '.vimrc' => 'rc.vim', '.vim' => 'vim'
 link_rc '.zshrc' => 'rc.zsh'
+link_rc '.muttrc' => 'rc.mutt'
 link_rc '.tmux.conf' => 'conf.tmux'
 link_rc '.screenrc' => 'rc.screen'
