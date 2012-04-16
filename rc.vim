@@ -33,10 +33,11 @@ colorscheme wombat256
 
 
 let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols_override = {
-        \ 'BRANCH': 'ψ',
-        \ 'LINE': '↳',
-        \ }
+
+"let g:Powerline_symbols_override = {
+"        \ 'BRANCH': 'ψ',
+"        \ 'LINE': '↳',
+"        \ }
 
 
 if has('mouse') 
