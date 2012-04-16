@@ -29,6 +29,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
   # TODO(mpetrov): Linux Specific Commands
 elif [[ "$unamestr" == 'Darwin' ]]; then
   alias ssh='ssh -R 6969:localhost:22'
+  alias vi='reattach-to-user-namespace vim'
 fi
 
 function renv() {   

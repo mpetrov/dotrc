@@ -13,12 +13,14 @@ set-option -g mouse-select-window on
 # # mouse can be used to resize panes (by dragging dividers)
 set-option -g mouse-resize-pane on
 
+
+set-option -g mouse-utf8 on
+
 # automatically set window title
 setw -g automatic-rename
 
 # act like vim
 setw -g mode-keys vi
-setw -g mode-mouse on
 #bind h select-pane -L
 #bind j select-pane -D
 #bind k select-pane -U

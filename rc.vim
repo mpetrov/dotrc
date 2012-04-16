@@ -2,6 +2,7 @@ set nocompatible
 set laststatus=2
 set encoding=utf-8
 
+
 let g:LustyJugglerSuppressRubyWarning = 1
 let g:ctrlp_working_path_mode = 0
 " Load Vundle
@@ -42,11 +43,12 @@ let g:Powerline_symbols = 'compatible'
 
 if has('mouse') 
   set mouse=a
-  autocmd VimEnter * set ttymouse=xterm2
-  autocmd FocusGained * set ttymouse=xterm2
-  autocmd BufEnter * set ttymouse=xterm2
-  autocmd CursorMoved * set ttymouse=xterm2
-  autocmd CursorMovedI * set ttymouse=xterm2
+    autocmd VimEnter * set ttymouse=xterm2
+    autocmd FocusGained * set ttymouse=xterm2
+    autocmd BufEnter * set ttymouse=xterm2
+    autocmd InsertEnter * set ttymouse=xterm2
+    autocmd InsertLeave * set ttymouse=xterm2
+    autocmd CursorHold * set ttymouse=xterm2
 endif
 
 
@@ -196,6 +198,7 @@ function! ToggleMouse()
   else
     set mouse=a
     set number
+    set ttymouse=xterm2
     echo "Mouse usage enabled"
   endif
 endfunction
