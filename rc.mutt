@@ -95,8 +95,8 @@ macro index M "T.*\n;WN" "Mark all messages as read"
 
 set index_format="%b %4C %Z %{%b %d} %-15.15L %?M?(#%03M)&(%4l)? %?y?(%.20Y) ?%s"
 
-set sort= reverse-threads
-set sort_aux= last-date-received
+#set sort= reverse-threads
+#set sort_aux= last-date-received
 
 subscribe webkit-dev vim_dev vim_use closure-compiler-discuss chromium-dev git-users
 
