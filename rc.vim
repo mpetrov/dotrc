@@ -24,6 +24,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle "ack.vim"
 Bundle "tComment"
 Bundle "ZoomWin"
+Bundle "gcov.vim"
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'mutewinter/LustyJuggler'
 Bundle 'HiColors'
@@ -90,10 +91,12 @@ au BufRead,BufNewFile Makefile* set noexpandtab
 au BufRead,BufNewFile *.c set tabstop=4 softtabstop=4 shiftwidth=4 expandtab 
 au BufRead,BufNewFile *.h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
-au BufRead,BufNewFile *.js  set textwidth=80
+au BufRead,BufNewFile *.c  set textwidth=80
 au BufRead,BufNewFile *.js  setlocal iskeyword+=.
 au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
 
+
+set textwidth=80
 
 "autocmd bufwritepost .vimrc source $MYVIMRC
 
@@ -142,14 +145,11 @@ filetype off
 syntax on
 filetype plugin indent on
 
-if v:version >= 700
+"if v:version >= 730
   set colorcolumn=+1
   hi ColorColumn guibg=#2d2d2d ctermbg=246
-endif
-
-if v:version >= 730
   set clipboard+=unnamed
-endif
+"endif
 
 set fileformats=unix,dos,mac
 set clipboard=unnamed
@@ -202,3 +202,7 @@ function! ToggleMouse()
   endif
 endfunction
 
+
+nnoremap / /\v
+vnoremap / /\v
+cnoremap %s/ %s/\v
