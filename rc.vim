@@ -1,18 +1,14 @@
 set nocompatible
-set laststatus=2
 set encoding=utf-8
+set laststatus=2
 
+" Set some plugin preferences
 let g:ctrlp_working_path_mode = 0
-
 let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols_override = {
-      \ 'BRANCH': '',
-      \ 'LINE': '',
-      \ }
+let g:Powerline_symbols_override = {'BRANCH': '', 'LINE': ''}
 let g:Powerline_dividers_override = ['', '|', '', '']
 
-
-" Load Vundle
+" Load Vundle plugins
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -26,14 +22,14 @@ Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
-Bundle "ack.vim"
-Bundle "tComment"
-Bundle "ZoomWin"
+Bundle 'ack.vim'
+Bundle 'tComment'
+Bundle 'ZoomWin'
 Bundle 'HiColors'
+Bundle 'YankRing.vim'
 filetype on
 
-set background=dark
-set t_Co=256
+set background=dark t_Co=256
 colorscheme wombat256
 
 
@@ -61,7 +57,6 @@ au BufRead,BufNewFile *.c set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 au BufRead,BufNewFile *.cc set tabstop=4 softtabstop=4 shiftwidth=4 expandtab 
 au BufRead,BufNewFile *.h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
-au BufRead,BufNewFile *.c  set textwidth=80
 au BufRead,BufNewFile *.js  setlocal iskeyword+=.
 au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
 
@@ -159,4 +154,16 @@ function! ToggleMouse()
     echo "Mouse usage enabled"
   endif
 endfunction
+
+function! s:pbcopy()
+  call system("ssh localhost -p 6969 pbcopy", getreg(""))
+endfunction
+command! -nargs=0 -bar PBCopy call s:pbcopy()
+
+function! s:pbpaste()
+  call setreg("", system("ssh localhost -p 6969 pbpaste"))
+endfunction
+command! -nargs=0 -bar PBPaste call s:pbpaste()
+
+set undofile undodir=~/.vim/undodir undolevels=1000  undoreload=10000 
 
