@@ -89,6 +89,7 @@ let g:SuperTabDefaultCompletionType = "<C-N>"
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 au BufRead,BufNewFile *.c set tabstop=4 softtabstop=4 shiftwidth=4 expandtab 
+au BufRead,BufNewFile *.cc set tabstop=4 softtabstop=4 shiftwidth=4 expandtab 
 au BufRead,BufNewFile *.h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 au BufRead,BufNewFile *.js  set textwidth=80
@@ -106,7 +107,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
 " Ignore useless files from command-t searches
-set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen,bin,*.class
+set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen,bin,*.class,*~,*.Po
 
 set backspace=indent,eol,start
 set spelllang=en_gb
@@ -144,11 +145,11 @@ syntax on
 filetype plugin indent on
 
 if v:version >= 700
-  set colorcolumn=+1
   hi ColorColumn guibg=#2d2d2d ctermbg=246
 endif
 
 if v:version >= 730
+  set colorcolumn=+1
   set clipboard+=unnamed
 endif
 
