@@ -98,5 +98,5 @@ set index_format="%b %4C %Z %{%b %d} %-15.15L %?M?(#%03M)&(%4l)? %?y?(%.20Y) ?%s
 #set sort= reverse-threads
 #set sort_aux= last-date-received
 
-subscribe webkit-dev vim_dev vim_use closure-compiler-discuss chromium-dev git-users
+subscribe webkit-dev vim_dev zsh-users scs-students vim_use closure-library-discuss closure-compiler-discuss chromium-dev git-users devel webkit-help vim-dev parking v8-users
 

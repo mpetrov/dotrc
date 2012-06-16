@@ -45,6 +45,8 @@ set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 setw -g monitor-activity on
 set -g visual-activity on
 
+setw -g aggressive-resize on
+
 unbind [
 bind Escape copy-mode
 unbind p
@@ -82,7 +84,8 @@ set-option -g display-panes-colour colour166 #orange
 # clock
 set-window-option -g clock-mode-colour colour64 #green
 
-set -sg escape-time 1
+#set -sg escape-time 1
+set -sg escape-time 0
 
 set -g base-index 1
 setw -g pane-base-index 1
@@ -98,7 +101,9 @@ bind P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log"
 unbind C-b
 set -g prefix C-a
 
+bind C-k clear-history
 
+bind C-a send-keys C-a
 bind C-c run "tmux show-buffer | ssh -p 6969 localhost pbcopy"
 bind C-v run "ssh -p 6969 localhost pbpaste | tmux load-buffer - && tmux paste-buffer"
 
