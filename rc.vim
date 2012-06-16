@@ -2,15 +2,15 @@ set nocompatible
 set laststatus=2
 set encoding=utf-8
 
-
 let g:ctrlp_working_path_mode = 0
 
-"let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'compatible'
 let g:Powerline_symbols_override = {
-        \ 'BRANCH': 'ψ',
-        \ 'LINE': '↳',
-        \ }
+      \ 'BRANCH': '',
+      \ 'LINE': '',
+      \ }
+let g:Powerline_dividers_override = ['', '|', '', '']
+
 
 " Load Vundle
 filetype off
@@ -31,6 +31,7 @@ Bundle "tComment"
 Bundle "ZoomWin"
 Bundle 'HiColors'
 filetype on
+
 set background=dark
 set t_Co=256
 colorscheme wombat256
@@ -38,45 +39,18 @@ colorscheme wombat256
 
 if has('mouse') 
   set mouse=a
-    autocmd VimEnter * set ttymouse=xterm2
-    autocmd FocusGained * set ttymouse=xterm2
-    autocmd BufEnter * set ttymouse=xterm2
-    autocmd InsertEnter * set ttymouse=xterm2
-    autocmd InsertLeave * set ttymouse=xterm2
-    autocmd CursorHold * set ttymouse=xterm2
+  autocmd VimEnter,FocusGained,BufEnter,InsertEnter,InsertLeave,CursorHold *
+        \ set ttymouse=xterm2
 endif
 
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent smartindent cindent
 
-let g:Tlist_Ctags_Cmd="/usr/local/bin/ctags"
-let Tlist_javascript_Ctags_Cmd = '~/.vim/closure_ctags.rb'
-let g:tagbar_type_javascript = {
-    \ 'ctagsbin' : '~/.vim/closure_ctags.rb'
-\ }
 let g:syntastic_disabled_filetypes = ["c", "html"]
 
-let g:tagbar_type_javascript = {
-    \ 'ctagsbin' : '~/.vim/closure_ctags.rb',
-    \ 'ctagstype' : 'JavaScript',
-    \ 'kinds'     : [
-        \ 'o:objects',
-        \ 'v:obj',
-        \ 'f:functions',
-        \ 'a:arrays',
-        \ 's:strings'
-    \ ]
-\ }
-
-
-set spelllang=en_gb
-set nospell
+set spelllang=en_gb nospell
 set ruler nu 
-set showcmd hlsearch incsearch noerrorbells
-set list
-set wildmode=longest:full
-set wildmenu
 
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = "<C-N>"
@@ -91,14 +65,10 @@ au BufRead,BufNewFile *.c  set textwidth=80
 au BufRead,BufNewFile *.js  setlocal iskeyword+=.
 au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
 
-
 set textwidth=80
-
-"autocmd bufwritepost .vimrc source $MYVIMRC
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
-  
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
@@ -108,21 +78,18 @@ set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,tools,gen,bin,*.class,*~
 
 set backspace=indent,eol,start
 set spelllang=en_gb
-set showcmd hlsearch incsearch noerrorbells list wildmenu
-set nospell nu
+set showcmd incsearch noerrorbells list wildmenu
+set nospell nu hls
 set wildmode=list:longest,full
 
 set tags=./tags,tags
 filetype plugin indent on
-
-"set cursorline cursorcolumn
 
 runtime! macros/matchit.vim
 
 execute "set listchars=tab:" . nr2char(187) . '\ '
 
 set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1 
-
 
 if has('gui_macvim')
   set guifont=Menlo:h11
@@ -134,40 +101,31 @@ cmap w!! w !sudo tee % >/dev/null
 
 set nobackup nowritebackup noswapfile
 
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-
 filetype off
 syntax on
 filetype plugin indent on
 
-if v:version >= 700
-  hi ColorColumn guibg=#2d2d2d ctermbg=246
-endif
-
-if v:version >= 730
+if v:version >= 703
   set colorcolumn=+1
-  set colorcolumn=+1
-  hi ColorColumn guibg=#2d2d2d ctermbg=246
+  hi ColorColumn ctermbg=236 cterm=none guibg=#2d2d2d
   set clipboard+=unnamed
 endif
 
 set fileformats=unix,dos,mac
-set clipboard=unnamed
 set history=1000
-
 
 " Leader key mappings
 nmap <silent> <leader>s :set spell!<CR>
 nmap <silent> <leader>p :set paste!<CR>
-nmap <silent> <leader>h :nohl<CR>
+nmap <silent> <leader>h :set hls!<CR>
 nmap <silent> <leader>m :w<ENTER>:make<CR>
 nmap <silent> <leader>f :w<ENTER>:!fixjsstyle %<ENTER>:e! %<CR>
 
 noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
 vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
-nnoremap <LocalLeader>/ :TComment<CR>
-vnoremap <LocalLeader>/ :TComment<CR>
+
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+
 " MacVim bindings.
 nmap <D-[> <<
 nmap <D-]> >>
@@ -185,7 +143,6 @@ map <D-7> 7gt
 map <D-8> 8gt
 map <D-9> 9gt
 map <D-0> :tablast<CR>
-
 
 " Hack for toggling mouse usage
 nmap <silent> <leader>c :call ToggleMouse()<CR>
