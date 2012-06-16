@@ -13,7 +13,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey '^Xe' edit-command-line
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:$HOME/prefix/bin:$HOME/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:/prefix/bin:/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin
 
 
 setopt INC_APPEND_HISTORY
@@ -40,4 +40,16 @@ function renv() {
     fi
   fi
 }
+
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+  z --add "$(pwd -P)"
+}
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+
+export PKG_CONFIG_PATH="/prefix/lib/pkgconfig:$PKG_CONFIG_PATH" 
+export LD_LIBRARY_PATH=../libdwarf/libdwarf:/prefix/lib:/usr/lib/local:$PKG_CONFIG_PATH  
 

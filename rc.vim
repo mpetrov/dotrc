@@ -3,8 +3,15 @@ set laststatus=2
 set encoding=utf-8
 
 
-let g:LustyJugglerSuppressRubyWarning = 1
 let g:ctrlp_working_path_mode = 0
+
+"let g:Powerline_symbols = 'compatible'
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols_override = {
+        \ 'BRANCH': 'ψ',
+        \ 'LINE': '↳',
+        \ }
+
 " Load Vundle
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -18,27 +25,16 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'kien/ctrlp.vim'
-Bundle "git.zip"
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/vim-powerline'
 Bundle "ack.vim"
 Bundle "tComment"
 Bundle "ZoomWin"
-Bundle "gcov.vim"
-Bundle 'mutewinter/vim-indent-guides'
-Bundle 'mutewinter/LustyJuggler'
 Bundle 'HiColors'
 filetype on
 set background=dark
 set t_Co=256
 colorscheme wombat256
 
-
-let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols_override = {
-        \ 'BRANCH': 'ψ',
-        \ 'LINE': '↳',
-        \ }
 
 
 if has('mouse') 
