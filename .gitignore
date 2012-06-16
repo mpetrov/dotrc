@@ -1,1 +1,7 @@
 .DS_Store
+vim/eclim
+vim/spell
+vim/plugin
+vim/doc
+vim/bundle
+vim/.netrwhist
