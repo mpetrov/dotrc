@@ -13,6 +13,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
+Bundle 'YankRing.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'msanders/snipmate.vim'
 Bundle 'duganchen/vim-soy'
@@ -26,7 +27,6 @@ Bundle 'ack.vim'
 Bundle 'tComment'
 Bundle 'ZoomWin'
 Bundle 'HiColors'
-Bundle 'YankRing.vim'
 filetype on
 
 set background=dark t_Co=256

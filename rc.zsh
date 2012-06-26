@@ -1,5 +1,7 @@
 export ZSH=$HOME/.rc/submodules/zsh-oh-my-zsh
 
+export DISABLE_AUTO_TITLE="true"
+
 export ZSH_THEME="fishy"
 export DISABLE_AUTO_UPDATE="true"
 
@@ -13,7 +15,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey '^Xe' edit-command-line
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:/prefix/bin:/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:/prefix/bin:/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin:$HOME/prefix/bin:$HOME/prefix/sbin
 
 
 setopt INC_APPEND_HISTORY
@@ -45,6 +47,6 @@ function renv() {
 
 
 
-export PKG_CONFIG_PATH="/prefix/lib/pkgconfig:$PKG_CONFIG_PATH" 
-export LD_LIBRARY_PATH=../libdwarf/libdwarf:/prefix/lib:/usr/lib/local:$PKG_CONFIG_PATH  
+export PKG_CONFIG_PATH="/prefix/lib/pkgconfig:$HOME/prefix/lib/pkgconfig:$PKG_CONFIG_PATH" 
+export LD_LIBRARY_PATH=../libdwarf/libdwarf:$HOME/prefix/lib:/prefix/lib:/usr/lib/local:$PKG_CONFIG_PATH  
 
