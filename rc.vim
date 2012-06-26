@@ -12,6 +12,7 @@ let g:Powerline_dividers_override = ['', '|', '', '']
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'YankRing.vim'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'msanders/snipmate.vim'
@@ -26,7 +27,6 @@ Bundle 'ack.vim'
 Bundle 'tComment'
 Bundle 'ZoomWin'
 Bundle 'HiColors'
-Bundle 'YankRing.vim'
 filetype on
 
 set background=dark t_Co=256
@@ -42,6 +42,7 @@ endif
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent smartindent cindent
+set gdefault
 
 let g:syntastic_disabled_filetypes = ["c", "html"]
 
@@ -140,8 +141,7 @@ map <D-9> 9gt
 map <D-0> :tablast<CR>
 
 " Hack for toggling mouse usage
-nmap <silent> <leader>c :call ToggleMouse()<CR>
-function! ToggleMouse()
+function! s:ToggleMouse()
   if &mouse == 'a'
     set mouse=
     set nonumber
@@ -154,6 +154,7 @@ function! ToggleMouse()
     echo "Mouse usage enabled"
   endif
 endfunction
+command! -nargs=0 -bar ToggleMouse call s:ToggleMouse()
 
 function! s:pbcopy()
   call system("ssh localhost -p 6969 pbcopy", getreg(""))
@@ -167,3 +168,11 @@ command! -nargs=0 -bar PBPaste call s:pbpaste()
 
 set undofile undodir=~/.vim/undodir undolevels=1000  undoreload=10000 
 
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>

@@ -1,10 +1,15 @@
-export ZSH=$HOME/.rc/submodules/zsh-oh-my-zsh
+DOTRC=$HOME/.rc
+export ZSH=$DOTRC/submodules/zsh-oh-my-zsh
+
+export DISABLE_AUTO_TITLE="true"
 
 export ZSH_THEME="fishy"
 export DISABLE_AUTO_UPDATE="true"
 
 plugins=(git osx vi-mode brew)
 source $ZSH/oh-my-zsh.sh
+
+
 source $ZSH/../zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/../zsh-history-substring-search/zsh-history-substring-search.zsh
 
@@ -30,6 +35,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
 elif [[ "$unamestr" == 'Darwin' ]]; then
   alias ssh='ssh -R 6969:localhost:22'
   alias vi='reattach-to-user-namespace vim'
+  alias ls='gls --color -h'
 fi
 
 function renv() {   
@@ -40,9 +46,6 @@ function renv() {
     fi
   fi
 }
-
-
-
 
 
 export PKG_CONFIG_PATH="/prefix/lib/pkgconfig:$PKG_CONFIG_PATH" 
