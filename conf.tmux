@@ -21,23 +21,20 @@ setw -g automatic-rename
 
 # act like vim
 setw -g mode-keys vi
-#bind h select-pane -L
-#bind j select-pane -D
-#bind k select-pane -U
-#bind l select-pane -R
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
 bind-key -r C-h select-window -t :-
 bind-key -r C-l select-window -t :+
 
-bind -r h resize-pane -L 5
-bind -r j resize-pane -D 5
-bind -r k resize-pane -U 5
-bind -r l resize-pane -R 5
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
 
 # look good
 set -g default-terminal "screen-256color"
-
-# status indicators
-#set -g status-right '#(uptime | cut -d, -f 2-)'
 
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 #### COLOUR
@@ -54,35 +51,10 @@ bind p paste-buffer
 bind -t vi-copy 'v' begin-selection
 bind -t vi-copy 'y' copy-selection
 
-# default statusbar colors
-set-option -g status-bg colour235 #base02
-set-option -g status-fg colour136 #yellow
-set-option -g status-attr default
-
-# default window title colors
-set-window-option -g window-status-fg colour244
-set-window-option -g window-status-bg default
-#set-window-option -g window-status-attr dim
-
-# active window title colors
-set-window-option -g window-status-current-fg colour166 #orange
-set-window-option -g window-status-current-bg default
-#set-window-option -g window-status-current-attr bright
-
-# pane border
-set-option -g pane-border-fg colour235 #base02
-set-option -g pane-active-border-fg colour240 #base01
 
 # message text
 set-option -g message-bg colour235 #base02
 set-option -g message-fg colour166 #orange
-
-# pane number display
-set-option -g display-panes-active-colour colour33 #blue
-set-option -g display-panes-colour colour166 #orange
-
-# clock
-set-window-option -g clock-mode-colour colour64 #green
 
 #set -sg escape-time 1
 set -sg escape-time 0
@@ -108,3 +80,20 @@ bind C-c run "tmux show-buffer | ssh -p 6969 localhost pbcopy"
 bind C-v run "ssh -p 6969 localhost pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 if-shell 'test "$(uname)" = "Darwin"' 'source ~/.rc/osx.tmux'
+
+
+set -g status-left-length 52
+set -g status-right-length 451
+set -g status-fg white
+set -g status-bg colour234
+set -g window-status-activity-attr bold
+set -g pane-border-fg colour245
+set -g pane-active-border-fg colour39
+set -g message-fg colour16
+set -g message-bg colour221
+set -g message-attr bold
+set -g status-left '#[fg=colour235,bg=colour252,bold] #S #[fg=colour245,bg=colour238,bold] #(hostname) '
+set -g window-status-format "#[fg=252,bg=colour235] #I #W "
+set -g window-status-current-format "#[fg=colour24,bg=colour39,noreverse,bold] #I #W #[fg=colour39,bg=colour234,nobold]"
+
+set -g status-right '#[fg=green]#[fg=colour252,bg=colour238] %Y.%m.%d #[fg=colour235,bg=colour252,bold] %H:%M #[default]'
