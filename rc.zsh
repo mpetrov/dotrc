@@ -1,4 +1,8 @@
-export ZSH=$HOME/.rc/submodules/zsh-oh-my-zsh
+DOTRC=$HOME/.rc
+export ZSH=$DOTRC/submodules/zsh-oh-my-zsh
+
+
+export DISABLE_AUTO_TITLE="true"
 
 export DISABLE_AUTO_TITLE="true"
 
@@ -7,6 +11,8 @@ export DISABLE_AUTO_UPDATE="true"
 
 plugins=(git osx vi-mode brew)
 source $ZSH/oh-my-zsh.sh
+
+
 source $ZSH/../zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/../zsh-history-substring-search/zsh-history-substring-search.zsh
 
@@ -15,7 +21,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey '^Xe' edit-command-line
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:/prefix/bin:/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin:$HOME/prefix/bin:$HOME/prefix/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:$PREFIX/bin:/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin:$HOME/prefix/bin:$HOME/prefix/sbin
 
 
 setopt INC_APPEND_HISTORY
@@ -28,10 +34,12 @@ function session() {
 }
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
-  # TODO(mpetrov): Linux Specific Commands
+  export PREFIX=$HOME/prefix
 elif [[ "$unamestr" == 'Darwin' ]]; then
   alias ssh='ssh -R 6969:localhost:22'
   alias vi='reattach-to-user-namespace vim'
+  export PREFIX=/prefix
+  alias ls='gls --color -h'
 fi
 
 function renv() {   
@@ -43,10 +51,6 @@ function renv() {
   fi
 }
 
-
-
-
-
-export PKG_CONFIG_PATH="/prefix/lib/pkgconfig:$HOME/prefix/lib/pkgconfig:$PKG_CONFIG_PATH" 
-export LD_LIBRARY_PATH=../libdwarf/libdwarf:$HOME/prefix/lib:/prefix/lib:/usr/lib/local:$PKG_CONFIG_PATH  
+export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH" 
+export LD_LIBRARY_PATH=../libdwarf/libdwarf:$PREFIX/lib:/usr/lib/local:$PKG_CONFIG_PATH  
 

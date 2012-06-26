@@ -103,8 +103,8 @@ brew 'screen' =>
   'https://raw.github.com/adamv/homebrew-alt/master/duplicates/screen.rb'
 brew 'reattach-to-user-namespace' =>
   'https://raw.github.com/phinze/homebrew/tmux-macosx-pasteboard/Library/Formula/reattach-to-user-namespace.rb'
-
 brew 'dos2unix', 'unrar', 'wget', 'par', 'git-extras', 'zsh', 'tmux'
+brew 'https://github.com/downloads/zolrath/wemux/wemux.rb'
 
 submodule_update
 link_rc '.vimrc' => 'rc.vim', '.vim' => 'vim'
@@ -112,3 +112,5 @@ link_rc '.zshrc' => 'rc.zsh'
 link_rc '.muttrc' => 'rc.mutt'
 link_rc '.tmux.conf' => 'conf.tmux'
 link_rc '.screenrc' => 'rc.screen'
+link_rc '.dir_colors' => 'submodules/dircolors-solarized/dircolors.256dark'
+
