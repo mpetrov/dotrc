@@ -9,7 +9,8 @@
 	url = https://github.com/robbyrussell/oh-my-zsh
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
-	url = https://github.com/gmarik/vundle.git
+  url = https://github.com/gmarik/vundle.git
+  ignore = dirty
 [submodule "submodules/dircolors-solarized"]
 	path = submodules/dircolors-solarized
 	url = git://github.com/seebi/dircolors-solarized.git
