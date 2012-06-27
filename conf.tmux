@@ -96,4 +96,6 @@ set -g status-left '#[fg=colour235,bg=colour252,bold] #(hostname) #[fg=colour245
 set -g window-status-format "#[fg=252,bg=colour235] #I #W "
 set -g window-status-current-format "#[fg=colour24,bg=colour39,noreverse,bold] #I #W #[fg=colour39,bg=colour234,nobold]"
 
-set -g status-right '#[fg=green]#[fg=colour252,bg=colour238] %Y.%m.%d #[fg=colour235,bg=colour252,bold] %H:%M #[default]'
+set -g status-right '#[fg=green]#[fg=colour252,bg=colour238] %a %m/%d #[fg=colour235,bg=colour252,bold] %H:%M #[default]'
+
+#set-option -g status-position top
