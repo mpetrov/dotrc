@@ -12,9 +12,7 @@ let g:Powerline_dividers_override = ['', '|', '', '']
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'YankRing.vim'
 Bundle 'gmarik/vundle'
-Bundle 'YankRing.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'msanders/snipmate.vim'
 Bundle 'duganchen/vim-soy'
@@ -110,6 +108,9 @@ endif
 
 set fileformats=unix,dos,mac
 set history=1000
+
+map <leader>b :CtrlPBuffer<cr>
+map <leader>t :CtrlPMRU<cr>
 
 " Leader key mappings
 nmap <silent> <leader>s :set spell!<CR>
