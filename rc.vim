@@ -21,13 +21,12 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'lokaltog/vim-powerline'
 Bundle 'ack.vim'
-Bundle 'tComment'
-Bundle 'ZoomWin'
-Bundle 'HiColors'
+Bundle 'tcomment'
+Bundle 'zoomwin'
+Bundle 'hicolors'
 filetype plugin indent on
-
 " Encoding and file preferences
 set encoding=utf8 fileformats=unix,dos,mac
 
