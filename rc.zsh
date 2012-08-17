@@ -39,7 +39,6 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
   alias ssh='ssh -R 6969:localhost:22'
   alias vi='reattach-to-user-namespace vim'
   export PREFIX=/prefix
-  alias ls='gls --color -h'
 fi
 
 function renv() {   
