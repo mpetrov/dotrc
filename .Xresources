@@ -1,0 +1,55 @@
+xterm*internalBorder: 2
+xterm*saveLines: 65535
+xterm*dynamicColors: on
+xterm*highlightSelection: true
+xterm*utf8: 2
+xterm*eightBitInput: true
+xterm*termName:  xterm-256color
+
+!Appearance
+!xterm*faceName: DejaVu Sans Mono:pixelsize=10
+
+Xft.dpi: 128
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+
+! IR_Black
+xterm*background: #000000
+xterm*foreground: #F2F2F2
+
+! black
+*color0: #000000
+*color8: #7C7C7C
+
+! red
+*color1: #FF6C60
+*color9: #FFB6B0
+
+! green
+*color2: #A8FF60
+*color10: #CEFFAC
+
+! yellow
+*color3: #FFFFB6
+*color11: #FFFFCC
+
+! blue
+*color4: #96CBFE
+*color12: #B6DCFF
+
+! magenta
+*color5: #FF73FD
+*color13: #FF9CFE
+
+! cyan
+*color6: #C6C5FE
+*color14: #DFDFFE
+
+! white
+*color7: #EEEEEE
+*color15: #FFFFFF

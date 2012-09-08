@@ -84,33 +84,20 @@ def brew(*args)
 
 end
 
-def install_mercurial
-  return unless mac?
-  if not File.exists? '/usr/local/bin/hg'
-      if `easy_install mercurial 2>&1` && $?.exitstatus == 0 then
-        puts "Installed Mercurial"
-      else
-        puts "ERROR: Could not install Mercurial!"
-      end
-  end
-end
 
-install_mercurial
 apt_get 'ruby1.8-dev', 'rake', 'vim-gnome', 'exuberant-ctags'
-brew 'vim' =>
-  'https://raw.github.com/adamv/homebrew-alt/master/duplicates/vim.rb'
-brew 'screen' =>
-  'https://raw.github.com/adamv/homebrew-alt/master/duplicates/screen.rb'
-brew 'reattach-to-user-namespace' =>
-  'https://raw.github.com/phinze/homebrew/tmux-macosx-pasteboard/Library/Formula/reattach-to-user-namespace.rb'
-brew 'dos2unix', 'unrar', 'wget', 'par', 'git-extras', 'zsh', 'tmux'
-brew 'https://github.com/downloads/zolrath/wemux/wemux.rb'
+#brew 'mercurial'
+#brew 'https://raw.github.com/Homebrew/homebrew-dupes/master/vim.rb'
+#brew 'reattach-to-user-namespace'
+#brew 'dos2unix', 'unrar', 'wget', 'par', 'git-extras', 'zsh', 'tmux'
+#brew 'https://github.com/downloads/zolrath/wemux/wemux.rb'
 
 submodule_update
 link_rc '.vimrc' => 'rc.vim', '.vim' => 'vim'
 link_rc '.zshrc' => 'rc.zsh'
 link_rc '.muttrc' => 'rc.mutt'
 link_rc '.tmux.conf' => 'conf.tmux'
+link_rc '.Xresources' => '.Xresources'
 link_rc '.screenrc' => 'rc.screen'
 link_rc '.dir_colors' => 'submodules/dircolors-solarized/dircolors.256dark'
 

@@ -51,6 +51,18 @@ nnoremap <Leader>l "qyiwgv:s/\<<C-r>q\>//g<Left><Left>
 nnoremap <Leader>L "qyiwgv:s/\<<C-r>q\>/<C-r>q/g<Left><Left>
 noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
 
+" Eclim bindings
+nnoremap <Leader>jr :JavaRename 
+nnoremap <Leader>jc :JavaCorrect<CR> 
+nnoremap <Leader>jcon :JavaConstructor<CR> 
+nnoremap <Leader>jgs :JavaGetSet<CR> 
+nnoremap <Leader>jg :JavaGet<CR> 
+nnoremap <Leader>js :JavaSet<CR> 
+nnoremap <Leader>jic :JavaImportClean<CR> 
+nnoremap <Leader>jim :JavaImportMissing<CR> 
+nnoremap <Leader>jpp :ProjectProblems<CR>
+nnoremap <Leader>cc :CtrlPClearAllCaches<CR>:CtrlP<CR>
+
 " Indentation
 nmap <D-[> <<
 nmap <D-]> >>
@@ -90,7 +102,7 @@ set foldmethod=indent foldnestmax=10 nofoldenable foldlevel=1
 
 " Indentation and tabbing
 set autoindent smartindent cindent
-function s:IndentLevel(num)
+function! s:IndentLevel(num)
   execute 'set softtabstop=' . a:num . ' shiftwidth=' . a:num . ' expandtab'
 endfunction
 command! -nargs=* -bar IndentLevel call s:IndentLevel(<f-args>)
@@ -122,6 +134,7 @@ set wildmode=list:longest,full
 au BufRead,BufNewFile Makefile* set noexpandtab
 au BufRead,BufNewFile *.c IndentLevel 4
 au BufRead,BufNewFile *.cc IndentLevel 4
+au BufRead,BufNewFile *.java IndentLevel 4
 au BufRead,BufNewFile *.h IndentLevel 4
 
 " Add some keywords to help autocompletion
@@ -135,8 +148,8 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " Hack to keep the mouse working in tmux
 if has('mouse') 
   set mouse=a
-  autocmd VimEnter,FocusGained,BufEnter,InsertEnter,InsertLeave,CursorHold *
-        \ set ttymouse=xterm2
+  "autocmd VimEnter,FocusGained,BufEnter,InsertEnter,InsertLeave,CursorHold *
+  "      \ set ttymouse=xterm2
 endif
 
 " Ignore some files when using ctrl-p

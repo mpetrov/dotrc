@@ -1,18 +1,12 @@
 DOTRC=$HOME/.rc
 export ZSH=$DOTRC/submodules/zsh-oh-my-zsh
 
-
 export DISABLE_AUTO_TITLE="true"
-
-export DISABLE_AUTO_TITLE="true"
-
-export ZSH_THEME="fishy"
 export DISABLE_AUTO_UPDATE="true"
+export ZSH_THEME="fishy"
 
 plugins=(git osx vi-mode brew)
 source $ZSH/oh-my-zsh.sh
-
-
 source $ZSH/../zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/../zsh-history-substring-search/zsh-history-substring-search.zsh
 
@@ -23,15 +17,8 @@ bindkey '^Xe' edit-command-line
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:$PREFIX/bin:/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin:$HOME/prefix/bin:$HOME/prefix/sbin
 
-
 setopt INC_APPEND_HISTORY
 
-function session() {
-  if [[ "$TERM" != "screen-256color" ]] then
-    tmux attach-session -t "$USER" || tmux new-session -s "$USER"
-    exit
-  fi
-}
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
   export PREFIX=$HOME/prefix
@@ -53,3 +40,5 @@ function renv() {
 export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH" 
 export LD_LIBRARY_PATH=../libdwarf/libdwarf:$PREFIX/lib:/usr/lib/local:$PKG_CONFIG_PATH  
 
+
+PATH=$PATH:$HOME/.rvm/bin
