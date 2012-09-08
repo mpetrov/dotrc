@@ -24,7 +24,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
   export PREFIX=$HOME/prefix
 elif [[ "$unamestr" == 'Darwin' ]]; then
   alias ssh='ssh -R 6969:localhost:22'
-  alias vi='reattach-to-user-namespace vim'
+  alias wemux='reattach-to-user-namespace wemux'
   export PREFIX=/prefix
 fi
 

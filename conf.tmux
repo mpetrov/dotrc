@@ -76,14 +76,15 @@ set -g prefix C-a
 bind C-k clear-history
 
 bind C-a send-keys C-a
-bind C-c run "tmux show-buffer | ssh -p 6969 localhost pbcopy"
-bind C-v run "ssh -p 6969 localhost pbpaste | tmux load-buffer - && tmux paste-buffer"
+#bind C-c run "tmux show-buffer | ssh -p 6969 localhost pbcopy"
+#bind C-v run "ssh -p 6969 localhost pbpaste | tmux load-buffer - && tmux paste-buffer"
+bind C-c run "tmux show-buffer | xclip -i -selection clipboard"
+bind C-v run "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer"
 
 bind 0 last-window
 bind a last-pane
 
 if-shell 'test "$(uname)" = "Darwin"' 'source ~/.rc/osx.tmux'
-
 
 set -g status-left-length 52
 set -g status-right-length 451
