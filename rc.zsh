@@ -50,6 +50,8 @@ gitsetup() {
   git config --global merge.tool vimdiff
   git config --global alias.ll "log --stat --abbrev-commit"
   git config --global alias.s status
+  git config --global user.name "Martin Petrov"
+  git config --global user.email mpetrov@google.com
 }
 
 
