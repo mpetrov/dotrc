@@ -34,6 +34,29 @@ Bundle 'garyharan/vim-proto'
 filetype plugin indent on"
 " }}}
 
+" Aesthetics{{{
+" MacVIM / GVim settings {{{
+if has('gui_running')
+  set guioptions=egmt
+endif
+
+" If we're using MacVim
+if has('gui_macvim')
+  set guifont=Menlo:h11
+  set transparency=0
+endif
+" }}}
+
+" Assume a 256 colour terminal, make it pretty {{{
+set background=dark t_Co=256
+syntax on
+colorscheme wombat256
+execute "set listchars=tab:" . nr2char(187) . '\ '
+set ruler nu hls
+set showcmd noerrorbells list wildmenu
+" }}}
+" }}}
+
 " General Settings  {{{
 
 " Encoding and file preferences
@@ -88,29 +111,6 @@ if v:version >= 703
   hi ColorColumn ctermbg=236 cterm=none guibg=#2d2d2d
   set clipboard+=unnamed
 endif
-" }}}
-" }}}
-
-" Aesthetics{{{
-" MacVIM / GVim settings {{{
-if has('gui_running')
-  set guioptions=egmt
-endif
-
-" If we're using MacVim
-if has('gui_macvim')
-  set guifont=Menlo:h11
-  set transparency=0
-endif
-" }}}
-
-" Assume a 256 colour terminal, make it pretty {{{
-set background=dark t_Co=256
-syntax on
-colorscheme wombat256
-execute "set listchars=tab:" . nr2char(187) . '\ '
-set ruler nu hls
-set showcmd noerrorbells list wildmenu
 " }}}
 " }}}
 

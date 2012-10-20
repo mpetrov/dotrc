@@ -57,4 +57,7 @@ gitsetup() {
 
 portkill() { lsof | awk "/TCP \*:$1/ {print \$2}" | xargs -r -l kill $2; }
 
-source /home/mpetrov/.google_zshrc > /dev/null
+if [ -f /home/mpetrov/.google_zshrc ]; then
+  source /home/mpetrov/.google_zshrc
+fi
+
