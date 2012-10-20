@@ -64,7 +64,7 @@ hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic
 hi Comment		ctermfg=246		cterm=none		guifg=#99968b	gui=italic
 hi Todo			ctermfg=245		cterm=none		guifg=#8f8f8f	gui=italic
 
-if !has('gui_macvim')
+if !has('gui_running')
 	hi Error			ctermfg=52		cterm=none		guifg=#5f0000	gui=italic
 	hi SpellBad			ctermfg=52		cterm=none		guifg=#5f0000	gui=italic
 	hi SpellLocal			ctermfg=17		cterm=none		guifg=#00005f	gui=italic

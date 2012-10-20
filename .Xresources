@@ -7,7 +7,7 @@ xterm*eightBitInput: true
 xterm*termName:  xterm-256color
 
 !Appearance
-!xterm*faceName: DejaVu Sans Mono:pixelsize=10
+xterm*faceName: DejaVu Sans Mono:pixelsize=14
 
 Xft.dpi: 128
 Xft.autohint: 0
@@ -53,3 +53,5 @@ xterm*foreground: #F2F2F2
 ! white
 *color7: #EEEEEE
 *color15: #FFFFFF
+
+

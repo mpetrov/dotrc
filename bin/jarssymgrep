@@ -1,0 +1,14 @@
+#!/bin/bash
+
+pattern=$1
+shift
+
+for jar in $(find $* -type f -name "*.jar")
+do
+  match=`unzip -q -c $jar | strings | grep $pattern`
+  if [ ! -z "$match" ]
+  then
+    echo "Found in: $jar"
+    echo "$match"
+  fi
+done

@@ -1,17 +1,14 @@
 # make mouse useful in iTerm
 set -g mouse-select-pane on
 
-# mouse can be used to resize panes (by dragging dividers)
-set-option -g mouse-resize-pane on
-
 # allow mouse to enter copy mode and initiate selection
 set-window-option -g mode-mouse on
 
 # mouse can be used to select windows (by clicking in the status bar)
 set-option -g mouse-select-window on
 
-# # mouse can be used to resize panes (by dragging dividers)
-set-option -g mouse-resize-pane on
+# mouse can be used to resize panes (by dragging dividers)
+#set-option -g mouse-resize-pane on
 
 
 set-option -g mouse-utf8 on
@@ -78,8 +75,8 @@ bind C-k clear-history
 bind C-a send-keys C-a
 #bind C-c run "tmux show-buffer | ssh -p 6969 localhost pbcopy"
 #bind C-v run "ssh -p 6969 localhost pbpaste | tmux load-buffer - && tmux paste-buffer"
-bind C-c run "tmux show-buffer | xclip -i -selection clipboard"
-bind C-v run "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer"
+#bind C-c run "tmux show-buffer | xclip -i -selection clipboard"
+#bind C-v run "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer"
 
 bind 0 last-window
 bind a last-pane
@@ -102,4 +99,13 @@ set -g window-status-current-format "#[fg=colour24,bg=colour39,noreverse,bold] #
 
 set -g status-right '#[fg=green]#[fg=colour252,bg=colour238] %a %m/%d #[fg=colour235,bg=colour252,bold] %H:%M #[default]'
 
-#set-option -g status-position top
+
+set-option -g default-shell /usr/bin/zsh
+set-option -g xterm-keys on
+
+set -g update-environment "DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY"
+
+# C-c: save into system clipboard (+). With preselection.
+bind C-c choose-buffer "run \"tmux save-buffer -b %% - | xclip -i -sel clipboard\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
+# C-v: copy from + clipboard.
+bind C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(xclip -o -sel clipboard | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \""

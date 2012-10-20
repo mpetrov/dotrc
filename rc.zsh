@@ -42,3 +42,17 @@ export LD_LIBRARY_PATH=../libdwarf/libdwarf:$PREFIX/lib:/usr/lib/local:$PKG_CONF
 
 
 PATH=$PATH:$HOME/.rvm/bin
+PATH=$PATH:$HOME/.rc/bin
+
+
+gitsetup() {
+  git config --global color.ui true
+  git config --global merge.tool vimdiff
+  git config --global alias.ll "log --stat --abbrev-commit"
+  git config --global alias.s status
+}
+
+
+portkill() { lsof | awk "/TCP \*:$1/ {print \$2}" | xargs -r -l kill $2; }
+
+source /home/mpetrov/.google_zshrc > /dev/null
