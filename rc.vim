@@ -129,10 +129,10 @@ noremap <silent> <leader>m :w<ENTER>:make<CR>
 nnoremap <Leader>cc :CtrlPClearAllCaches<CR>:CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>t :CtrlPMRU<cr>
-noremap <C-m> :CtrlPMRU<cr>
+noremap <C-h> :CtrlPMRU<cr>
 
 noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
-noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+"noremap <leader>et :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Indentation key mappings {{{
 nmap <D-[> <<
