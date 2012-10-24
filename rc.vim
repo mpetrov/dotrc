@@ -31,6 +31,8 @@ Bundle 'ZoomWin'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'garyharan/vim-proto'
+Bundle 'sjl/vitality.vim'
+Bundle 'sjl/gundo.vim'
 filetype plugin indent on"
 " }}}
 
