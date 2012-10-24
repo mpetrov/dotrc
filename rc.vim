@@ -32,6 +32,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'garyharan/vim-proto'
 Bundle 'vim-scripts/keepcase.vim'
+Bundle 'sjl/vitality.vim'
+Bundle 'sjl/gundo.vim'
 filetype plugin indent on"
 " }}}
 
