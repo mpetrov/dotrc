@@ -31,6 +31,7 @@ Bundle 'ZoomWin'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'garyharan/vim-proto'
+Bundle 'vim-scripts/keepcase.vim'
 filetype plugin indent on"
 " }}}
 
@@ -87,8 +88,11 @@ runtime! macros/matchit.vim
 set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,*.pyc,gen,bin,*.class,*~,*.Po,*.git5_specs
 
 " Fold options
-set foldmethod=indent foldnestmax=10 
-"set foldlevel=1 nofoldenable 
+set foldmethod=indent foldnestmax=10
+set foldenable foldlevelstart=1
+
+" Hide the eclim sratch window
+set completeopt-=preview
 
 " Custom commands {{{
 cmap w!! w !sudo tee % >/dev/null
@@ -182,7 +186,7 @@ augroup mpetrovgroup
   au FileType java call s:JavaBufferSettings()
 
   " Use markers to fold in vim
-  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType vim setlocal foldmethod=marker foldlevel=0
 
   " Open the buffer in the same spot
   autocmd BufReadPost *

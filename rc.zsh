@@ -57,7 +57,9 @@ gitsetup() {
 
 portkill() { lsof | awk "/TCP \*:$1/ {print \$2}" | xargs -r -l kill $2; }
 
+tmux set-option -ga update-environment 'DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY'
+
 if [ -f /home/mpetrov/.google_zshrc ]; then
   source /home/mpetrov/.google_zshrc
 fi
-
+clear
