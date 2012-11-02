@@ -106,6 +106,6 @@ set-option -g xterm-keys on
 set -g update-environment "DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY"
 
 # C-c: save into system clipboard (+). With preselection.
-bind C-c choose-buffer "run \"tmux save-buffer -b %% - | xclip -i -sel clipboard\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
+bind C-c choose-buffer "run \"tmux save-buffer -b %% - | zsh -ic 'xcopy'\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
 # C-v: copy from + clipboard.
-bind C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(xclip -o -sel clipboard | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \""
+bind C-v run "tmux set-buffer \"$(zsh -ic xpaste)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(zsh -ic xpaste)... \""

@@ -34,6 +34,7 @@ Bundle 'garyharan/vim-proto'
 Bundle 'vim-scripts/keepcase.vim'
 Bundle 'sjl/vitality.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'mpetrov/vim-diffstat'
 filetype plugin indent on"
 " }}}
 
@@ -127,10 +128,17 @@ nnoremap <Leader>l "qyiwgv:s/\<<C-r>q\>//g<Left><Left>
 nnoremap <Leader>L "qyiwgv:s/\<<C-r>q\>/<C-r>q/g<Left><Left>
 nnoremap <Leader>a "ayiw:Ack <C-r>a<CR>
 
+noremap <silent> <leader>- :<C-U>exe ":res -".(10 * v:count1)<CR>
+noremap <silent> <leader>+ :<C-U>exe ":res +".(10 * v:count1)<CR>
+noremap <silent> <leader>< :<C-U>exe ":vertical res -".(10 * v:count1)<CR>
+noremap <silent> <leader>> :<C-U>exe ":vertical res +".(10 * v:count1)<CR>
+
 noremap <silent> <leader>s :set spell!<CR>
 noremap <silent> <leader>p :set paste!<CR>
 noremap <silent> <leader>h :set hls!<CR>
 noremap <silent> <leader>m :w<ENTER>:make<CR>
+
+noremap <leader>d :DiffStat HEAD HEAD..HEAD~1 HEAD~1..HEAD~2<cr>
 
 nnoremap <Leader>cc :CtrlPClearAllCaches<CR>:CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<cr>
@@ -201,7 +209,7 @@ augroup END
 
 " Google specific stuff goes here {{{
 let g:google_vimrc = "/home/mpetrov/.google_vimrc"
-if filereadable(g:google_vimrc)
+if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
   exec "source " . g:google_vimrc
 end
 " }}}

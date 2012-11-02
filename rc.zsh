@@ -57,9 +57,19 @@ gitsetup() {
 
 portkill() { lsof | awk "/TCP \*:$1/ {print \$2}" | xargs -r -l kill $2; }
 
-tmux set-option -ga update-environment 'DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY'
+
+function update_display() {
+  export DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1`
+}
+
+alias xpaste=' DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1`  xclip -o'
+alias xcopy='DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1` xclip -i -sel clipboard'
+
+update_display
+tmux set-option -ga update-environment 'DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY' > /dev/null
+
 
 if [ -f /home/mpetrov/.google_zshrc ]; then
   source /home/mpetrov/.google_zshrc
 fi
-clear
+
