@@ -1,4 +1,4 @@
-" Set some plugin preferences {{{
+" Set some plugin preferences {{{1
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$',
@@ -10,9 +10,8 @@ let g:Powerline_symbols_override = {'BRANCH': '', 'LINE': ''}
 let g:Powerline_dividers_override = ['', '|', '', '']
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
-" }}}
 
-" Bootstrap and load Vundle plugins {{{
+" Bootstrap and load Vundle plugins {{{1
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -20,7 +19,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'msanders/snipmate.vim'
-Bundle 'duganchen/vim-soy'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-pastie'
@@ -36,10 +34,9 @@ Bundle 'sjl/vitality.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'mpetrov/vim-diffstat'
 filetype plugin indent on"
-" }}}
 
-" Aesthetics{{{
-" MacVIM / GVim settings {{{
+" Aesthetics{{{1
+" MacVIM / GVim settings {{{2
 if has('gui_running')
   set guioptions=egmt
 endif
@@ -49,19 +46,16 @@ if has('gui_macvim')
   set guifont=Menlo:h11
   set transparency=0
 endif
-" }}}
 
-" Assume a 256 colour terminal, make it pretty {{{
+" Assume a 256 colour terminal, make it pretty {{{2
 set background=dark t_Co=256
 syntax on
 colorscheme wombat256
 execute "set listchars=tab:" . nr2char(187) . '\ '
 set ruler nu hls
 set showcmd noerrorbells list wildmenu
-" }}}
-" }}}
 
-" General Settings  {{{
+" General Settings  {{{1
 
 " Encoding and file preferences
 set encoding=utf8 fileformats=unix,dos,mac
@@ -97,11 +91,10 @@ set foldenable foldlevelstart=1
 " Hide the eclim sratch window
 set completeopt-=preview
 
-" Custom commands {{{
+" Custom commands {{{2
 cmap w!! w !sudo tee % >/dev/null
-" }}}
 
-" Indentation and tabbing {{{
+" Indentation and tabbing {{{2
 set autoindent smartindent cindent
 function! s:IndentLevel(num)
   execute 'setlocal softtabstop=' . a:num . ' shiftwidth=' . a:num . ' expandtab'
@@ -110,18 +103,15 @@ command! -nargs=* -bar IndentLevel call s:IndentLevel(<f-args>)
 IndentLevel 2
 
 set textwidth=80
-" }}}
 
-" Share the clipboard and use colorcolumn on vim 7.3 {{{
+" Share the clipboard and use colorcolumn on vim 7.3 {{{2
 if v:version >= 703
   set colorcolumn=+1
   hi ColorColumn ctermbg=236 cterm=none guibg=#2d2d2d
   set clipboard+=unnamed
 endif
-" }}}
-" }}}
 
-" Keyboard mappings {{{
+" Keyboard mappings {{{1
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>R :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
 nnoremap <Leader>l "qyiwgv:s/\<<C-r>q\>//g<Left><Left>
@@ -145,10 +135,7 @@ noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>t :CtrlPMRU<cr>
 noremap <C-h> :CtrlPMRU<cr>
 
-noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
-"noremap <leader>et :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Indentation key mappings {{{
+" Indentation key mappings {{{2
 nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
@@ -157,10 +144,8 @@ nmap <M-[> <<
 nmap <M-]> >>
 vmap <M-[> <gv
 vmap <M-]> >gv
-" }}}
-" }}}
 
-" File specific settings / local mappings {{{
+" File specific settings / local mappings {{{1
 
 " Change the local leader key
 let maplocalleader=","
@@ -195,8 +180,9 @@ augroup mpetrovgroup
   au FileType c setlocal omnifunc=ccomplete#Complete
   au FileType java call s:JavaBufferSettings()
 
-  " Use markers to fold in vim
+  " Use markers to fold in vim and zsh files
   autocmd FileType vim setlocal foldmethod=marker foldlevel=0
+  autocmd FileType zsh setlocal foldmethod=marker foldlevel=0
 
   " Open the buffer in the same spot
   autocmd BufReadPost *
@@ -205,11 +191,9 @@ augroup mpetrovgroup
         \ endif
 augroup END
 
-" }}}
 
-" Google specific stuff goes here {{{
-let g:google_vimrc = "/home/mpetrov/.google_vimrc"
+" Google specific stuff goes here {{{1
+let g:google_vimrc = "~/.google_rc/google_rc.vim"
 if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
   exec "source " . g:google_vimrc
 end
-" }}}
