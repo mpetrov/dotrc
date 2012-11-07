@@ -176,6 +176,7 @@ augroup mpetrovgroup
   au BufRead,BufNewFile *.cc IndentLevel 4
   au BufRead,BufNewFile *.h IndentLevel 4
   au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
+  au BufRead,BufNewFile BUILD setlocal ft=python
   au FileType python setlocal omnifunc=pythoncomplete#Complete
   au FileType c setlocal omnifunc=ccomplete#Complete
   au FileType java call s:JavaBufferSettings()
@@ -193,7 +194,7 @@ augroup END
 
 
 " Google specific stuff goes here {{{1
-let g:google_vimrc = "~/.google_rc/google_rc.vim"
+let g:google_vimrc = expand("~/.google_rc/google_rc.vim")
 if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
   exec "source " . g:google_vimrc
 end
