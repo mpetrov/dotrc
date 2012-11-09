@@ -11,11 +11,10 @@ let g:Powerline_dividers_override = ['', '|', '', '']
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
 let g:neocomplcache_enable_at_startup = 1
-
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
+"let g:neocomplcache_min_syntax_length = 3
 
 " Bootstrap and load Vundle plugins {{{1
 set nocompatible
@@ -40,8 +39,8 @@ Bundle 'mpetrov/vim-diffstat'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neocomplcache.git'
 Bundle 'Shougo/neosnippet.git'
+Bundle 'Lokaltog/vim-easymotion'
 filetype plugin indent on"
-
 " Aesthetics{{{1
 " MacVIM / GVim settings {{{2
 if has('gui_running')
@@ -142,6 +141,11 @@ noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>t :CtrlPMRU<cr>
 noremap <C-h> :CtrlPMRU<cr>
 
+imap <expr><Tab> neosnippet#expandable() ? 
+      \ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><Tab> neosnippet#expandable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 " Indentation key mappings {{{2
 nmap <D-[> <<
 nmap <D-]> >>
@@ -199,14 +203,8 @@ augroup mpetrovgroup
         \ endif
 augroup END
 
-
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
 " Google specific stuff goes here {{{1
 let g:google_vimrc = expand("~/.google_rc/google_rc.vim")
 if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
   exec "source " . g:google_vimrc
 end
-
-
