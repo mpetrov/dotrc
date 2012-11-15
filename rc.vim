@@ -10,12 +10,6 @@ let g:Powerline_symbols_override = {'BRANCH': '', 'LINE': ''}
 let g:Powerline_dividers_override = ['', '|', '', '']
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
-let g:neocomplcache_enable_at_startup = 1
-
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
 
 " Bootstrap and load Vundle plugins {{{1
 set nocompatible
@@ -24,6 +18,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
+Bundle 'msanders/snipmate.vim'
+Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-unimpaired'
@@ -38,7 +34,7 @@ Bundle 'sjl/vitality.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'git@github.com:mpetrov/vim-ctrlp-related.git'
 Bundle 'git@github.com:mpetrov/vim-diffstat.git'
-filetype plugin indent on"
+filetype plugin indent on
 
 " Aesthetics{{{1
 " MacVIM / GVim settings {{{2
@@ -197,14 +193,8 @@ augroup mpetrovgroup
         \ endif
 augroup END
 
-
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
 " Google specific stuff goes here {{{1
 let g:google_vimrc = expand("~/.google_rc/google_rc.vim")
 if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
   exec "source " . g:google_vimrc
 end
-
-
