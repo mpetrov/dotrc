@@ -42,11 +42,14 @@ hi PmenuSel		ctermfg=0		ctermbg=192						guifg=#000000	guibg=#cae682
 endif
 
 
-highlight DiffAdd term=reverse cterm=bold ctermbg=22 ctermfg=white 
-highlight DiffChange term=reverse cterm=none ctermbg=52 ctermfg=white 
-highlight DiffText term=reverse cterm=none ctermbg=130 ctermfg=white 
-highlight DiffDelete term=reverse cterm=none ctermbg=18 ctermfg=white 
+highlight DiffAdd term=reverse cterm=bold ctermbg=22 ctermfg=white
+highlight DiffChange term=reverse cterm=none ctermbg=52 ctermfg=white
+highlight DiffText term=reverse cterm=none ctermbg=130 ctermfg=white
+highlight DiffDelete term=reverse cterm=none ctermbg=18 ctermfg=white
 
+hi TabLineFill ctermbg=237 cterm=none term=reverse
+hi TabLineSel ctermbg=32 cterm=bold ctermfg=17
+hi TabLine ctermbg=237 cterm=none
 
 
 
@@ -75,4 +78,8 @@ endif
 hi! link FoldColumn		Folded
 hi! link CursorColumn	CursorLine
 
+
+if v:version >= 703
+  hi ColorColumn ctermbg=236 cterm=none guibg=#2d2d2d
+endif
 " vim:set ts=4 sw=4 noet:

@@ -9,7 +9,7 @@ set-option -g mouse-select-window on
 
 # mouse can be used to resize panes (by dragging dividers)
 #set-option -g mouse-resize-pane on
-
+set -g history-limit 50000
 
 set-option -g mouse-utf8 on
 

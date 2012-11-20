@@ -32,6 +32,7 @@ Bundle 'garyharan/vim-proto'
 Bundle 'vim-scripts/keepcase.vim'
 Bundle 'sjl/vitality.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'guns/xterm-color-table.vim'
 Bundle 'git@github.com:mpetrov/vim-ctrlp-related.git'
 Bundle 'git@github.com:mpetrov/vim-diffstat.git'
 filetype plugin indent on
