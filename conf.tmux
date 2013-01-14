@@ -5,7 +5,7 @@ set -g mouse-select-pane on
 set-window-option -g mode-mouse on
 
 # mouse can be used to select windows (by clicking in the status bar)
-set-option -g mouse-select-window on
+# set-option -g mouse-select-window on
 
 # mouse can be used to resize panes (by dragging dividers)
 #set-option -g mouse-resize-pane on

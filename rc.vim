@@ -182,6 +182,8 @@ augroup mpetrovgroup
   au BufRead,BufNewFile *.h IndentLevel 4
   au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
   au BufRead,BufNewFile BUILD setlocal ft=python
+  au BufRead,BufNewFile *.srcjar setlocal ft=tar
+  au BufReadCmd *.srcjar call zip#Browse(expand("<amatch>"))
   au FileType python setlocal omnifunc=pythoncomplete#Complete
   au FileType c setlocal omnifunc=ccomplete#Complete
   au FileType java call s:JavaBufferSettings()
