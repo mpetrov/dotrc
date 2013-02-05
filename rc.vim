@@ -10,6 +10,7 @@ let g:Powerline_symbols_override = {'BRANCH': '', 'LINE': ''}
 let g:Powerline_dividers_override = ['', '|', '', '']
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
+let g:EclimLoggingDisabled = 1
 
 " Bootstrap and load Vundle plugins {{{1
 set nocompatible
@@ -27,6 +28,7 @@ Bundle 'guns/xterm-color-table.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'sjl/vitality.vim'
 Bundle 'tpope/vim-fugitive'
@@ -91,7 +93,7 @@ set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,*.pyc,gen,bin,*.class,*~
 
 " Fold options
 set foldmethod=indent foldnestmax=10
-set foldenable foldlevelstart=1
+set foldenable foldlevelstart=4
 
 " Hide the eclim sratch window
 set completeopt-=preview
@@ -159,17 +161,17 @@ let maplocalleader=","
 function! s:JavaBufferSettings()
   IndentLevel 2
   setlocal textwidth=100
+  setlocal cinoptions-=(0
 
   " Eclim bindings
   nnoremap <buffer> <LocalLeader>r :JavaRename
-  nnoremap <buffer> <LocalLeader>c :JavaCorrect<CR>
-  nnoremap <buffer> <LocalLeader>con :JavaConstructor<CR>
-  nnoremap <buffer> <LocalLeader>gs :JavaGetSet<CR>
-  nnoremap <buffer> <LocalLeader>g :JavaGet<CR>
-  nnoremap <buffer> <LocalLeader>s :JavaSet<CR>
-  nnoremap <buffer> <LocalLeader>ic :JavaImportClean<CR>
-  nnoremap <buffer> <LocalLeader>im :JavaImportMissing<CR>
-  nnoremap <buffer> <LocalLeader>pp :ProjectProblems<CR>
+  nnoremap <buffer> <LocalLeader>c :JavaCorrect<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>con :JavaConstructor<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>gs :JavaGetSet<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>gg :JavaGet<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>ss :JavaSet<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>i :JavaImportOrganize<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>pp :ProjectProblems!<CR> :redraw!<CR>
 endfunction
 
 augroup mpetrovgroup
@@ -180,6 +182,7 @@ augroup mpetrovgroup
   au BufRead,BufNewFile *.c IndentLevel 4
   au BufRead,BufNewFile *.cc IndentLevel 4
   au BufRead,BufNewFile *.h IndentLevel 4
+  au BufRead,BufNewFile vim IndentLevel 2
   au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
   au BufRead,BufNewFile BUILD setlocal ft=python
   au BufRead,BufNewFile *.srcjar setlocal ft=tar
@@ -190,6 +193,7 @@ augroup mpetrovgroup
 
   " Use markers to fold in vim and zsh files
   autocmd FileType vim setlocal foldmethod=marker foldlevel=0
+  autocmd FileType vim IndentLevel 2
   autocmd FileType zsh setlocal foldmethod=marker foldlevel=0
 
   " Open the buffer in the same spot

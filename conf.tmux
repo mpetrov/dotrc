@@ -4,6 +4,21 @@ set -g mouse-select-pane on
 # allow mouse to enter copy mode and initiate selection
 set-window-option -g mode-mouse on
 
+
+bind m \
+  set -g mode-mouse on \;\
+  set -g mouse-select-pane on \;\
+  set -g mouse-select-window on \;\
+  display 'Mouse: ON'
+
+# Toggle mouse off with ^B M
+bind M \
+  set -g mode-mouse off \;\
+  set -g mouse-select-pane off \;\
+  set -g mouse-select-window off \;\
+  display 'Mouse: OFF'
+
+
 # mouse can be used to select windows (by clicking in the status bar)
 # set-option -g mouse-select-window on
 

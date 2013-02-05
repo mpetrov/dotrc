@@ -48,7 +48,7 @@ gitsetup() {
   git config --global user.email mpetrov@google.com
 }
 
-portkill() { lsof | awk "/TCP \*:$1/ {print \$2}" | xargs -r -l kill $2; }
+portkill() { lsof | awk "/TCP \*:$1/ {print \$2}" | xargs -r -l kill -I $2 -9; }
 
 # Copy / paste hacks {{{1
 
