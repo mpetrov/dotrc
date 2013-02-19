@@ -37,10 +37,14 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/keepcase.vim'
 Bundle 'vim-scripts/tComment'
+Bundle 'duganchen/vim-soy'
+"Bundle 'troydm/shellasync.vim'
 
 Bundle 'git@github.com:mpetrov/vim-ctrlp-related.git'
 Bundle 'git@github.com:mpetrov/vim-diffstat.git'
 filetype plugin indent on
+
+runtime! ftplugin/man.vim
 
 " Aesthetics{{{1
 " MacVIM / GVim settings {{{2
@@ -125,10 +129,15 @@ nnoremap <Leader>l "qyiwgv:s/\<<C-r>q\>//g<Left><Left>
 nnoremap <Leader>L "qyiwgv:s/\<<C-r>q\>/<C-r>q/g<Left><Left>
 nnoremap <Leader>a "ayiw:Ack <C-r>a<CR>
 
-noremap <silent> <leader>- :<C-U>exe ":res -".(10 * v:count1)<CR>
-noremap <silent> <leader>+ :<C-U>exe ":res +".(10 * v:count1)<CR>
-noremap <silent> <leader>< :<C-U>exe ":vertical res -".(10 * v:count1)<CR>
-noremap <silent> <leader>> :<C-U>exe ":vertical res +".(10 * v:count1)<CR>
+" noremap <silent> <leader>- :<C-U>exe ":res -".(10 * v:count1)<CR>
+" noremap <silent> <leader>+ :<C-U>exe ":res +".(10 * v:count1)<CR>
+" noremap <silent> <leader>< :<C-U>exe ":vertical res -".(10 * v:count1)<CR>
+" noremap <silent> <leader>> :<C-U>exe ":vertical res +".(10 * v:count1)<CR>
+
+nmap <leader><left>  :3wincmd <<cr>
+nmap <leader><right> :3wincmd ><cr>
+nmap <leader><up>    :3wincmd +<cr>
+nmap <leader><down>  :3wincmd -<cr>
 
 noremap <silent> <leader>s :set spell!<CR>
 noremap <silent> <leader>p :set paste!<CR>
@@ -186,6 +195,7 @@ augroup mpetrovgroup
   au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
   au BufRead,BufNewFile BUILD setlocal ft=python
   au BufRead,BufNewFile *.srcjar setlocal ft=tar
+  au BufRead,BufNewFile *.py setlocal ft=python
   au BufReadCmd *.srcjar call zip#Browse(expand("<amatch>"))
   au FileType python setlocal omnifunc=pythoncomplete#Complete
   au FileType c setlocal omnifunc=ccomplete#Complete
@@ -195,6 +205,7 @@ augroup mpetrovgroup
   autocmd FileType vim setlocal foldmethod=marker foldlevel=0
   autocmd FileType vim IndentLevel 2
   autocmd FileType zsh setlocal foldmethod=marker foldlevel=0
+  autocmd FileType man setlocal nolist
 
   " Open the buffer in the same spot
   autocmd BufReadPost *

@@ -1,0 +1,92 @@
+#!/bin/bash
+VERBOSE=false
+KILL9=false
+QUIET=false
+SLEEP=1
+
+function usage {
+  echo >&2 "portkill sends a kill signal (TERM, by default) to any processes"
+  echo >&2 "which are listening for TCP/UDP connections on the specified ports."
+  echo >&2 "usage: [-vq9h][-s <seconds>] port [port ...]]"
+  echo >&2 "    -v           enable verbose output"
+  echo >&2 "    -q           quiets all output; overrides verbose mode"
+  echo >&2 "    -9           sends KILL (kill -9) if TERM was ignored"
+  echo >&2 "    -s <seconds> seconds to wait after TERM before sending KILL; default: $SLEEP"
+  echo >&2 "    -h           display this help message"
+  echo >&2 ""
+  echo >&2 "return codes:"
+  echo >&2 "    0            normal termination"
+  echo >&2 "    1            no process found listening on port(s)"
+  echo >&2 "    2            bad argument"
+  exit $1
+}
+function findProcs {
+echo $(lsof -i -n -P | grep -P "(TC|UD)P ((\[::)?[0-9.]+\]?|\*):$1 \(LISTEN\)" | awk '{print $2}' | sort | uniq)
+}
+function showProc {
+  echo $1
+  ps auxwww $2
+}
+
+while getopts vq9hs: o
+do
+  case $o in
+    v) VERBOSE=true;;
+    q) QUIET=true;;
+    9) KILL9=true;;
+    s) SLEEP=$OPTARG;;
+    h) usage 0;;
+    \?) usage 2;;
+  esac
+done
+
+shift $(($OPTIND - 1))
+#  Decrements the argument pointer so it points to next argument.
+#  $1 now references the first non-option item supplied on the command-line
+#+ if one exists.
+
+if [[ "$*" = "" ]]; then
+  echo >&2 "Port number(s) required. Use portkill -h for help."
+  exit 1
+fi
+
+for PORT in $*; do
+  PROCS=$(findProcs $PORT)
+  if [[ "$PROCS" != "" ]]; then
+    for PROC in $PROCS; do
+      if [[ "$QUIET" != "true" ]]; then
+        if [[ "$VERBOSE" = "true" ]]; then
+          showProc "$PROC is listening on port $PORT and will be killed." $PROC
+        else
+          echo $PROC
+        fi
+      fi
+      kill $PROC
+    done
+  else
+     if [[ "$QUIET" != "true" && "$VERBOSE" = "true" ]]; then
+       echo "No process is listening on port $PORT."
+     fi
+     exit 1
+  fi
+done
+
+if [[ "$KILL9" = "true" ]]; then
+  sleep $SLEEP
+
+  for PORT in $*; do
+    PROCS=$(findProcs $PORT)
+    if [[ "$PROCS" != "" ]]; then
+      for PROC in $PROCS; do
+        if [[ "$QUIET" != "true" ]]; then
+          if [[ "$VERBOSE" = "true" ]]; then
+            showProc "$PROC is still listening on port $PORT and will be kill -9'd." $PROC
+          else
+            echo "$PROC -9"
+          fi
+        fi
+        kill -9 $PROC
+      done
+    fi
+  done
+fi
