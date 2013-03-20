@@ -47,16 +47,3 @@ gitsetup() {
   git config --global user.name "Martin Petrov"
   git config --global user.email mpetrov@google.com
 }
-
-# Copy / paste hacks {{{1
-
-function update_display() {
-  export DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1`
-}
-alias vi=vim
-alias xpaste=' DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1`  xclip -o'
-alias xcopy='DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1` xclip -i -sel clipboard'
-update_display
-tmux set-option -ga update-environment 'DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY' > /dev/null
-
-
