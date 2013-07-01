@@ -54,6 +54,9 @@ function update_display() {
   export DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1`
 }
 alias vi=vim
+alias e=vim
+alias :e=vim
+alias recent_branches='git for-each-ref --sort=-committerdate refs/heads/'
 alias xpaste=' DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1`  xclip -o'
 alias xcopy='DISPLAY=:`ls /tmp/.X11-unix | sed s/X// | head -1` xclip -i -sel clipboard'
 update_display
