@@ -12,6 +12,7 @@ let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
 let g:EclimLoggingDisabled = 1
 let g:syntastic_java_checkers = []
+let g:EclimCompletionMethod = 'omnifunc'
 
 " Bootstrap and load Vundle plugins {{{1
 set nocompatible
@@ -19,6 +20,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+Bundle 'jolan78/iTerm2Yank'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
@@ -31,7 +33,6 @@ Bundle 'gmarik/vundle'
 Bundle 'guns/xterm-color-table.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
-" Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'sjl/vitality.vim'
@@ -83,6 +84,7 @@ set laststatus=2 history=1000
 
 " Undo and backup settings
 set nobackup nowritebackup noswapfile
+set updatecount=0
 
 " Spelling options
 set spelllang=en_gb nospell
@@ -104,7 +106,7 @@ set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,*.pyc,gen,bin,*.class,*~
 set foldmethod=indent foldnestmax=10 foldenable foldlevelstart=4
 
 " Hide the eclim sratch window
-set completeopt-=preview
+" set completeopt-=preview
 
 " Custom commands {{{2
 cmap w!! w !sudo tee % >/dev/null
@@ -138,6 +140,9 @@ nmap <leader><right> :9wincmd ><cr>
 nmap <leader><up>    :9wincmd +<cr>
 nmap <leader><down>  :9wincmd -<cr>
 
+noremap <silent> <leader>gs :Gstatus<CR>
+noremap <silent> <leader>gc :Gcommit -a<CR>
+noremap <silent> <leader>gd :Gdiff<CR>
 noremap <silent> <leader>s :set spell!<CR>
 noremap <silent> <leader>p :set paste!<CR>
 noremap <silent> <leader>h :set hls!<CR>
@@ -152,6 +157,18 @@ nnoremap <Leader>cc :CtrlPClearAllCaches<CR>:CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>t :TagbarToggle<cr>
 noremap <C-h> :CtrlPMRU<cr>
+
+
+function! g:ToggleColorColumn()
+  if &colorcolumn != ''
+    setlocal colorcolumn&
+    setlocal nonu
+  else
+    setlocal colorcolumn=+1
+    setlocal nu
+  endif
+endfunction
+
 
 " Indentation key mappings {{{2
 nmap <D-[> <<
@@ -191,14 +208,13 @@ augroup mpetrovgroup
   autocmd!
 
   " Some file-specific indentation rules
-  au BufRead,BufNewFile * setlocal nobackup nowritebackup noswapfile
   au BufRead,BufNewFile Makefile* set noexpandtab
   au BufRead,BufNewFile *.c IndentLevel 4
   au BufRead,BufNewFile *.cc IndentLevel 4
   au BufRead,BufNewFile *.h IndentLevel 4
   au BufRead,BufNewFile vim IndentLevel 2
   au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
-  au BufRead,BufNewFile BUILD setlocal ft=python
+  " au BufRead,BufNewFile BUILD setlocal ft=python
   au BufRead,BufNewFile *.srcjar setlocal ft=tar
   au BufRead,BufNewFile *.py setlocal ft=python
   au BufReadCmd *.srcjar call zip#Browse(expand("<amatch>"))
@@ -223,10 +239,29 @@ augroup mpetrovgroup
   autocmd FileType python setlocal spell
 augroup END
 
+" Abberviations
+abbrev todo TODO(mpetrov):
+
+" Utilitiy functions {{{1
+function! g:DiffTestOutput()
+    norm "ayy
+    new
+    norm "ap
+    %s/but was/\r/g
+    norm gg"addG"add
+    %s/,/,\r/g
+    diffthis
+    vne
+    norm "apgg"add
+    %s/,/,\r/g
+    diffthis
+    diffu
+endfunction
+
+
 " Google specific stuff goes here {{{1
 let g:google_vimrc = expand("~/.google_rc/google_rc.vim")
 if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
   exec "source " . g:google_vimrc
 end
 
-ab todo TODO(mpetrov):

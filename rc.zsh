@@ -44,13 +44,18 @@ gitsetup() {
   git config --global merge.tool vimdiff
   git config --global alias.ll "log --stat --abbrev-commit"
   git config --global alias.s status
+  
   git config --global user.name "Martin Petrov"
   git config --global user.email mpetrov@google.com
 }
 
 # Aliases {{{1
 
+alias g=git
 alias vi=vim
 alias e=vim
 alias :e=vim
 alias recent_branches='git for-each-ref --sort=-committerdate refs/heads/'
+alias c=osc52.sh
+
+export TERM=screen-256color
