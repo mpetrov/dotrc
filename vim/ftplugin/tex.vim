@@ -1,6 +1,4 @@
-
 setlocal makeprg=pdflatex\ -file-line-error\ -interaction\ nonstopmode\ % 
-
 
 function! s:QfPDFOpen() 
    let qflist = getqflist() 
@@ -21,4 +19,3 @@ function! s:QfPDFOpen()
 endfunction 
 
 au QuickfixCmdPost make call s:QfPDFOpen() 
-
