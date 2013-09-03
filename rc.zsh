@@ -33,6 +33,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local
 
 PATH=$PATH:$HOME/.rvm/bin
 PATH=$PATH:$HOME/.rc/bin
+PATH=$PATH:$HOME/local/bin
 
 export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH" 
 export LD_LIBRARY_PATH=../libdwarf/libdwarf:$PREFIX/lib:/usr/lib/local:$PKG_CONFIG_PATH  

@@ -192,51 +192,44 @@ function! s:JavaBufferSettings()
   IndentLevel 2
   setlocal textwidth=100
   setlocal cinoptions-=(0
+  setlocal spell
 
   " Eclim bindings
-  nnoremap <buffer> <LocalLeader>r :JavaRename
   nnoremap <buffer> <LocalLeader>c :JavaCorrect<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>con :JavaConstructor<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>gs :JavaGetSet<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>gg :JavaGet<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>ss :JavaSet<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>gs :JavaGetSet<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>i :JavaImportOrganize<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>pp :ProjectProblems!<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>r :JavaRename
+  nnoremap <buffer> <LocalLeader>ss :JavaSet<CR> :redraw!<CR>
 endfunction
 
 augroup mpetrovgroup
   autocmd!
 
-  " Some file-specific indentation rules
-  au BufRead,BufNewFile Makefile* set noexpandtab
-  au BufRead,BufNewFile *.c IndentLevel 4
-  au BufRead,BufNewFile *.cc IndentLevel 4
-  au BufRead,BufNewFile *.h IndentLevel 4
-  au BufRead,BufNewFile vim IndentLevel 2
-  au BufRead,BufNewFile *.tex  setlocal iskeyword+=_
-  " au BufRead,BufNewFile BUILD setlocal ft=python
-  au BufRead,BufNewFile *.srcjar setlocal ft=tar
-  au BufRead,BufNewFile *.py setlocal ft=python
-  au BufReadCmd *.srcjar call zip#Browse(expand("<amatch>"))
-  au FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType python set completefunc=pythoncomplete#Complete
-  au FileType c setlocal omnifunc=ccomplete#Complete
-  au FileType java call s:JavaBufferSettings()
+  autocmd BufRead,BufNewFile *.tex  setlocal iskeyword+=_
+  autocmd BufRead,BufNewFile *.srcjar setlocal ft=tar
+  autocmd BufReadCmd *.srcjar call zip#Browse(expand("<amatch>"))
 
-  " Use markers to fold in vim and zsh files
-  autocmd FileType vim setlocal foldmethod=marker foldlevel=0
-  autocmd FileType vim IndentLevel 2
-  autocmd FileType zsh setlocal foldmethod=marker foldlevel=0
+  autocmd FileType c IndentLevel 4
+  autocmd FileType c setlocal omnifunc=ccomplete#Complete
+  autocmd FileType cpp IndentLevel 4
+  autocmd FileType java call s:JavaBufferSettings()
+  autocmd FileType javascript IndentLevel 2
   autocmd FileType man setlocal nolist
+  autocmd FileType make setlocal noexpandtab
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType python setlocal spell
+  autocmd FileType vim IndentLevel 2
+  autocmd FileType vim setlocal foldmethod=marker foldlevel=0
+  autocmd FileType zsh setlocal foldmethod=marker foldlevel=0
 
   " Open the buffer in the same spot
   autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \   exe "normal! g`\"" |
         \ endif
-
-  autocmd FileType java setlocal spell
-  autocmd FileType python setlocal spell
 augroup END
 
 " Abberviations
