@@ -88,15 +88,10 @@ set -g prefix C-a
 bind C-k clear-history
 
 bind C-a send-keys C-a
-#bind C-c run "tmux show-buffer | ssh -p 6969 localhost pbcopy"
-#bind C-v run "ssh -p 6969 localhost pbpaste | tmux load-buffer - && tmux paste-buffer"
-#bind C-c run "tmux show-buffer | xclip -i -selection clipboard"
-#bind C-v run "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer"
 
 bind 0 last-window
 bind a last-pane
 
-if-shell 'test "$(uname)" = "Darwin"' 'source ~/.rc/osx.tmux'
 
 set -g status-left-length 52
 set -g status-right-length 451
@@ -118,9 +113,7 @@ set -g status-right '#[fg=green]#[fg=colour252,bg=colour238] %a %m/%d #[fg=colou
 set-option -g default-shell /usr/bin/zsh
 set-option -g xterm-keys on
 
-set -g update-environment "DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY"
-
 # C-c: save into system clipboard (+). With preselection.
-bind C-c choose-buffer "run \"tmux save-buffer -b %% - | zsh -ic 'xcopy'\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
-# C-v: copy from + clipboard.
-bind C-v run "tmux set-buffer \"$(zsh -ic xpaste)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(zsh -ic xpaste)... \""
+# bind C-c choose-buffer "run \"tmux save-buffer -b %% - | zsh -ic 'xcopy'\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
+# # C-v: copy from + clipboard.
+# bind C-v run "tmux set-buffer \"$(zsh -ic xpaste)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(zsh -ic xpaste)... \""

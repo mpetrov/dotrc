@@ -1,18 +1,17 @@
 " Set some plugin preferences {{{1
+let g:solarized_termcolors=256
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$',
   \ 'file': '\.exe$\|\.so$\|\.dll$',
   \ 'link': 'blaze-bin\|blaze-genfiles\|blaze-google3\|blaze-out\|blaze-testlogs\|READONLY$',
   \ }
-let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols_override = {'BRANCH': '', 'LINE': ''}
-let g:Powerline_dividers_override = ['', '|', '', '']
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
 let g:EclimLoggingDisabled = 1
 let g:syntastic_java_checkers = []
-let g:EclimCompletionMethod = 'omnifunc'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " Bootstrap and load Vundle plugins {{{1
 set nocompatible
@@ -20,37 +19,33 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'airblade/vim-gitgutter'
-Bundle 'chrisbra/NrrwRgn'
-Bundle 'godlygeek/tabular'
-Bundle 'majutsushi/tagbar'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'ZoomWin'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'argtextobj.vim'
+Bundle 'bling/vim-airline'
+Bundle 'chrisbra/NrrwRgn'
+Bundle 'duganchen/vim-soy'
 Bundle 'ervandew/supertab'
 Bundle 'garyharan/vim-proto'
+Bundle 'git@github.com:mpetrov/vim-diffstat.git'
 Bundle 'gmarik/vundle'
-Bundle 'guns/xterm-color-table.vim'
+Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
+Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'sjl/vitality.vim'
 Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/keepcase.vim'
 Bundle 'vim-scripts/tComment'
-Bundle 'duganchen/vim-soy'
-Bundle 'scrooloose/syntastic'
-Bundle 'nelstrom/vim-visual-star-search'
-
-Bundle 'git@github.com:mpetrov/vim-ctrlp-related.git'
-Bundle 'git@github.com:mpetrov/vim-diffstat.git'
 filetype plugin indent on
 
 runtime! ftplugin/man.vim
@@ -68,11 +63,9 @@ if has('gui_macvim')
 endif
 
 " Assume a 256 colour terminal, make it pretty {{{2
-set background=dark t_Co=256
-colorscheme wombat256
-execute "set listchars=tab:" . nr2char(187) . '\ '
-set ruler nu hls
-set showcmd noerrorbells list wildmenu
+set background=light t_Co=256
+colorscheme solarized
+set ruler nu hls showcmd noerrorbells list wildmenu
 
 " General Settings  {{{1
 
@@ -83,8 +76,7 @@ set encoding=utf8 fileformats=unix,dos,mac
 set laststatus=2 history=1000
 
 " Undo and backup settings
-set nobackup nowritebackup noswapfile
-set updatecount=0
+set nobackup nowritebackup noswapfile updatecount=0
 
 " Spelling options
 set spelllang=en_gb nospell
@@ -97,7 +89,6 @@ set mouse=a
 
 " CTags files
 set tags=./tags,tags
-runtime! macros/matchit.vim
 
 " Ignore some files when using ctrl-p
 set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,*.pyc,gen,bin,*.class,*~,*.Po,*.git5_specs
@@ -124,7 +115,6 @@ set textwidth=80
 " Share the clipboard and use colorcolumn on vim 7.3 {{{2
 if v:version >= 703
   set colorcolumn=+1
-  hi ColorColumn ctermbg=236 cterm=none guibg=#2d2d2d
   set clipboard+=unnamed
 endif
 
@@ -133,7 +123,6 @@ nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>R :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
 nnoremap <Leader>l "qyiwgv:s/\<<C-r>q\>//g<Left><Left>
 nnoremap <Leader>L "qyiwgv:s/\<<C-r>q\>/<C-r>q/g<Left><Left>
-nnoremap <Leader>a "ayiw:Ack <C-r>a<CR>
 
 nmap <leader><left>  :9wincmd <<cr>
 nmap <leader><right> :9wincmd ><cr>
@@ -144,28 +133,27 @@ noremap <silent> <leader>gs :Gstatus<CR>
 noremap <silent> <leader>gc :Gcommit -a<CR>
 noremap <silent> <leader>gd :Gdiff<CR>
 noremap <silent> <leader>s :set spell!<CR>
-noremap <silent> <leader>p :set paste!<CR>
+noremap <silent> <leader>p :call g:TogglePaste()<CR>
 noremap <silent> <leader>h :set hls!<CR>
 noremap <silent> <leader>m :w<ENTER>:make<CR>
 noremap <silent> <leader>n :NERDTreeToggle<CR>
 noremap <silent> <leader>f :NERDTreeFind<CR>
 noremap <silent> <leader>g :GundoToggle<CR>
 
-noremap <leader>d :DiffStat HEAD HEAD..HEAD~1 HEAD~1..HEAD~2<cr>
-
 nnoremap <Leader>cc :CtrlPClearAllCaches<CR>:CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>t :TagbarToggle<cr>
 noremap <C-h> :CtrlPMRU<cr>
 
-
-function! g:ToggleColorColumn()
+function! g:TogglePaste()
   if &colorcolumn != ''
     setlocal colorcolumn&
     setlocal nonu
+    set paste
   else
     setlocal colorcolumn=+1
     setlocal nu
+    set nopaste
   endif
 endfunction
 
