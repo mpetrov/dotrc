@@ -20,7 +20,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'jolan78/iTerm2Yank'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
@@ -196,6 +196,7 @@ function! s:JavaBufferSettings()
 
   " Eclim bindings
   nnoremap <buffer> <LocalLeader>c :JavaCorrect<CR> :redraw!<CR>
+  nnoremap <buffer> <LocalLeader>f :JavaContextSearch<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>con :JavaConstructor<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>gg :JavaGet<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>gs :JavaGetSet<CR> :redraw!<CR>
@@ -203,6 +204,8 @@ function! s:JavaBufferSettings()
   nnoremap <buffer> <LocalLeader>pp :ProjectProblems!<CR> :redraw!<CR>
   nnoremap <buffer> <LocalLeader>r :JavaRename
   nnoremap <buffer> <LocalLeader>ss :JavaSet<CR> :redraw!<CR>
+
+  setlocal completefunc=eclim#java#complete#CodeComplete
 endfunction
 
 augroup mpetrovgroup
@@ -258,3 +261,4 @@ if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
   exec "source " . g:google_vimrc
 end
 
+set formatoptions+=j

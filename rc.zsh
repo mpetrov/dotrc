@@ -31,6 +31,7 @@ export EDITOR="vim -X"
 # Update the path {{{1
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011basic/bin/universal-darwin:/usr/local/bin:/usr/local/sbin:$PREFIX/bin:/prefix/sbin:/usr/local/gcc-4.5.2-for-linux32/bin:/usr/local/gcc-4.5.2-for-linux64/bin:$HOME/prefix/bin:$HOME/prefix/sbin:/usr/local/bin
 
+PATH=/usr/local/buildtools/java/jdk/bin:$PATH
 PATH=$PATH:$HOME/.rvm/bin
 PATH=$PATH:$HOME/.rc/bin
 PATH=$PATH:$HOME/local/bin
