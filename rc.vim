@@ -1,5 +1,4 @@
 " Set some plugin preferences {{{1
-let g:solarized_termcolors=256
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$',
@@ -10,6 +9,7 @@ let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
 let g:EclimLoggingDisabled = 1
 let g:syntastic_java_checkers = []
+let g:airline_theme='wombat'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -20,7 +20,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'ZoomWin'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'argtextobj.vim'
 Bundle 'bling/vim-airline'
 Bundle 'chrisbra/NrrwRgn'
@@ -63,8 +62,8 @@ if has('gui_macvim')
 endif
 
 " Assume a 256 colour terminal, make it pretty {{{2
-set background=light t_Co=256
-colorscheme solarized
+set background=dark t_Co=256
+colorscheme wombat256
 set ruler nu hls showcmd noerrorbells list wildmenu
 
 " General Settings  {{{1
