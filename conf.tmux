@@ -110,7 +110,7 @@ set -g window-status-current-format "#[fg=colour24,bg=colour39,noreverse,bold] #
 set -g status-right '#[fg=green]#[fg=colour252,bg=colour238] %a %m/%d #[fg=colour235,bg=colour252,bold] %H:%M #[default]'
 
 
-set-option -g default-shell /usr/bin/zsh
+set-option -g default-shell /usr/local/bin/zsh
 set-option -g xterm-keys on
 
 # C-c: save into system clipboard (+). With preselection.
