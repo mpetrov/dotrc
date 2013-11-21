@@ -1,6 +1,13 @@
 " Set some plugin preferences {{{1
+let g:solarized_contrast ='high'
 let g:solarized_termcolors=256
 let g:ctrlp_working_path_mode = 0
+let g:solarized_bold      =  1
+let g:solarized_underline =  1
+let g:solarized_italic    =  1
+let g:solarized_visibility= "high"                " {low|normal|high}
+let g:solarized_hitrail   =  0
+
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$',
   \ 'file': '\.exe$\|\.so$\|\.dll$',
@@ -77,6 +84,8 @@ set laststatus=2 history=1000
 
 " Undo and backup settings
 set nobackup nowritebackup noswapfile updatecount=0
+set backupdir=~/tmp
+set undodir=~/tmp
 
 " Spelling options
 set spelllang=en_gb nospell
@@ -98,6 +107,8 @@ set foldmethod=indent foldnestmax=10 foldenable foldlevelstart=4
 
 " Hide the eclim sratch window
 " set completeopt-=preview
+
+" set listchars=tab:> ,trail:␣,extends:>,precedes:<,nbsp:·
 
 " Custom commands {{{2
 cmap w!! w !sudo tee % >/dev/null
@@ -141,7 +152,7 @@ noremap <silent> <leader>f :NERDTreeFind<CR>
 noremap <silent> <leader>g :GundoToggle<CR>
 
 nnoremap <Leader>cc :CtrlPClearAllCaches<CR>:CtrlP<CR>
-noremap <leader>b :CtrlPBuffer<cr>
+" noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>t :TagbarToggle<cr>
 noremap <C-h> :CtrlPMRU<cr>
 
@@ -156,6 +167,7 @@ function! g:TogglePaste()
     set nopaste
   endif
 endfunction
+call togglebg#map("<leader>b")
 
 
 " Indentation key mappings {{{2
