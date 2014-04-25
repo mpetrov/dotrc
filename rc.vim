@@ -165,7 +165,6 @@ function! g:TogglePaste()
     set nopaste
   endif
 endfunction
-call togglebg#map("<leader>b")
 
 
 " Indentation key mappings {{{2
@@ -235,22 +234,6 @@ augroup END
 
 " Abberviations
 abbrev todo TODO(mpetrov):
-
-" Utilitiy functions {{{1
-function! g:DiffTestOutput()
-    norm "ayy
-    new
-    norm "ap
-    %s/but was/\r/g
-    norm gg"addG"add
-    %s/,/,\r/g
-    diffthis
-    vne
-    norm "apgg"add
-    %s/,/,\r/g
-    diffthis
-    diffu
-endfunction
 
 
 " Google specific stuff goes here {{{1
