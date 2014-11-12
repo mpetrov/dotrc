@@ -66,3 +66,8 @@ export TERM=screen-256color
 # export JAVA_HOME=`/usr/libexec/java_home -v 1.6`
 # export HADOOP_HOME=/usr/local/Cellar/hadoop/1.2.1
 # export HIVE_HOME=/usr/local/Cellar/hive/0.11.0/libexec
+#
+function adbshot() {
+  adb shell /system/bin/screencap -p /sdcard/screenshot.png
+  adb pull /sdcard/screenshot.png $1
+}

@@ -72,6 +72,10 @@ set background=dark t_Co=256
 colorscheme wombat256
 set ruler nu hls showcmd noerrorbells list wildmenu
 
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+
 " General Settings  {{{1
 
 " Encoding and file preferences
