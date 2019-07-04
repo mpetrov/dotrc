@@ -1,71 +1,39 @@
 " Set some plugin preferences {{{1
 let g:ctrlp_working_path_mode = 0
-let g:solarized_bold      =  1
-let g:solarized_underline =  1
-let g:solarized_italic    =  1
-let g:solarized_visibility= "high"                " {low|normal|high}
-let g:solarized_hitrail   =  0
-
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn\|\.git5_specs$',
+  \ 'dir':  '\.git$\|\.hg$',
   \ 'file': '\.exe$\|\.so$\|\.dll$',
   \ 'link': 'blaze-bin\|blaze-genfiles\|blaze-google3\|blaze-out\|blaze-testlogs\|READONLY$',
   \ }
 let g:SuperTabMappingBackward = '<c-s-tab>'
 let g:SuperTabDefaultCompletionType = '<C-N>'
-let g:EclimLoggingDisabled = 1
-let g:syntastic_java_checkers = []
 let g:airline_theme='wombat'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 " Bootstrap and load Vundle plugins {{{1
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'ZoomWin'
-Bundle 'argtextobj.vim'
-Bundle 'bling/vim-airline'
-Bundle 'chrisbra/NrrwRgn'
-Bundle 'duganchen/vim-soy'
-Bundle 'ervandew/supertab'
-Bundle 'garyharan/vim-proto'
-Bundle 'git@github.com:mpetrov/vim-diffstat.git'
-Bundle 'gmarik/vundle'
-Bundle 'godlygeek/tabular'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'mileszs/ack.vim'
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'sjl/gundo.vim'
-Bundle 'sjl/vitality.vim'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-pastie'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/tComment'
-filetype plugin indent on
-
-runtime! ftplugin/man.vim
+call plug#begin()
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mpetrov/wombat256.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-pastie'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+call plug#end()
 
 " Aesthetics{{{1
-" MacVIM / GVim settings {{{2
-if has('gui_running')
-  set guioptions=egmt
-endif
-
-" If we're using MacVim
-if has('gui_macvim')
-  set guifont=Menlo:h11
-  set transparency=0
-endif
 
 " Assume a 256 colour terminal, make it pretty {{{2
 set background=dark t_Co=256
@@ -90,7 +58,7 @@ set backupdir=~/tmp
 set undodir=~/tmp
 
 " Spelling options
-set spelllang=en_gb nospell
+set spelllang=en_us nospell
 
 " Menu options
 set wildmode=list:longest,full
@@ -98,19 +66,11 @@ set wildmode=list:longest,full
 " Enable the mouse
 set mouse=a
 
-" CTags files
-set tags=./tags,tags
-
 " Ignore some files when using ctrl-p
-set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,*.pyc,gen,bin,*.class,*~,*.Po,*.git5_specs
+set wildignore+=*.o,*.obj,.git,*.pdf,*.png,*.jpg,*.tiff,*.pyc,gen,bin,*.class,*~,*.Po
 
 " Fold options
 set foldmethod=indent foldnestmax=10 foldenable foldlevelstart=4
-
-" Hide the eclim sratch window
-" set completeopt-=preview
-
-" set listchars=tab:> ,trail:␣,extends:>,precedes:<,nbsp:·
 
 " Custom commands {{{2
 cmap w!! w !sudo tee % >/dev/null
@@ -125,11 +85,8 @@ IndentLevel 2
 
 set textwidth=80
 
-" Share the clipboard and use colorcolumn on vim 7.3 {{{2
-if v:version >= 703
-  set colorcolumn=+1
-  set clipboard+=unnamed
-endif
+set colorcolumn=+1
+set clipboard+=unnamed
 
 " Keyboard mappings {{{1
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -188,27 +145,6 @@ vmap <M-m> :set mouse=<cr>set nonu<cr>
 " Change the local leader key
 let maplocalleader=","
 
-" Define some mappings and indentation for Java
-function! s:JavaBufferSettings()
-  IndentLevel 2
-  setlocal textwidth=100
-  setlocal cinoptions-=(0
-  setlocal spell
-
-  " Eclim bindings
-  nnoremap <buffer> <LocalLeader>c :JavaCorrect<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>f :JavaContextSearch<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>con :JavaConstructor<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>gg :JavaGet<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>gs :JavaGetSet<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>i :JavaImportOrganize<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>pp :ProjectProblems!<CR> :redraw!<CR>
-  nnoremap <buffer> <LocalLeader>r :JavaRename
-  nnoremap <buffer> <LocalLeader>ss :JavaSet<CR> :redraw!<CR>
-
-  setlocal completefunc=eclim#java#complete#CodeComplete
-endfunction
-
 augroup mpetrovgroup
   autocmd!
 
@@ -216,13 +152,7 @@ augroup mpetrovgroup
   autocmd BufRead,BufNewFile *.srcjar setlocal ft=tar
   autocmd BufReadCmd *.srcjar call zip#Browse(expand("<amatch>"))
 
-  autocmd FileType c IndentLevel 4
   autocmd FileType c setlocal omnifunc=ccomplete#Complete
-  autocmd FileType cpp IndentLevel 4
-  autocmd FileType java call s:JavaBufferSettings()
-  autocmd FileType javascript IndentLevel 2
-  autocmd FileType man setlocal nolist
-  autocmd FileType make setlocal noexpandtab
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType python setlocal spell
   autocmd FileType vim IndentLevel 2
@@ -239,10 +169,9 @@ augroup END
 " Abberviations
 abbrev todo TODO(mpetrov):
 
-
 " Google specific stuff goes here {{{1
-let g:google_vimrc = expand("~/.google_rc/google_rc.vim")
-if filereadable(g:google_vimrc) && system('uname') =~? 'linux'
+let g:google_vimrc = expand("~/google_rc/google_rc.vim")
+if filereadable(g:google_vimrc)
   exec "source " . g:google_vimrc
 end
 

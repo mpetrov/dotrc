@@ -1,32 +1,8 @@
-# make mouse useful in iTerm
-set -g mouse-select-pane on
-
-# allow mouse to enter copy mode and initiate selection
-set-window-option -g mode-mouse on
-
-
-bind m \
-  set -g mode-mouse on \;\
-  set -g mouse-select-pane on \;\
-  set -g mouse-select-window on \;\
-  display 'Mouse: ON'
-
-# Toggle mouse off with ^B M
-bind M \
-  set -g mode-mouse off \;\
-  set -g mouse-select-pane off \;\
-  set -g mouse-select-window off \;\
-  display 'Mouse: OFF'
-
-
-# mouse can be used to select windows (by clicking in the status bar)
 # set-option -g mouse-select-window on
 
 # mouse can be used to resize panes (by dragging dividers)
 #set-option -g mouse-resize-pane on
 set -g history-limit 50000
-
-set-option -g mouse-utf8 on
 
 # automatically set window title
 setw -g automatic-rename
@@ -60,9 +36,6 @@ unbind [
 bind Escape copy-mode
 unbind p
 bind p paste-buffer
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-selection
-
 
 # message text
 set-option -g message-bg colour235 #base02
@@ -110,10 +83,6 @@ set -g window-status-current-format "#[fg=colour24,bg=colour39,noreverse,bold] #
 set -g status-right '#[fg=green]#[fg=colour252,bg=colour238] %a %m/%d #[fg=colour235,bg=colour252,bold] %H:%M #[default]'
 
 
-set-option -g default-shell /usr/bin/zsh
+set-option -g default-shell ${HOME}/homebrew/bin/zsh
 set-option -g xterm-keys on
 
-# C-c: save into system clipboard (+). With preselection.
-# bind C-c choose-buffer "run \"tmux save-buffer -b %% - | zsh -ic 'xcopy'\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
-# # C-v: copy from + clipboard.
-# bind C-v run "tmux set-buffer \"$(zsh -ic xpaste)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(zsh -ic xpaste)... \""
